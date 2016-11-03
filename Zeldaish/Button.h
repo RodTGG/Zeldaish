@@ -6,7 +6,7 @@
 /// A button that can be added to a SDL surface
 /// Scales to parameter values using SDL rectangle and SDL_BlitScaled
 /// </summary>
-class Button : ZeldaishObject
+class Button : public ZeldaishObject
 {
 public:	
 	/// <summary>

@@ -126,6 +126,7 @@
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="ZeldaishFunctions.cpp" />
     <ClCompile Include="ZeldaishObject.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -138,6 +139,7 @@
     <ClInclude Include="States.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="ZeldaishFunctions.h" />
     <ClInclude Include="ZeldaishObject.h" />
   </ItemGroup>
   <ItemGroup>

@@ -10,6 +10,7 @@ public:
 	int getY();
 	int getW();
 	int getH();
+	SDL_Rect getRectangle();
 
 	void setX(int aLocation);
 	void setY(int aLocation);

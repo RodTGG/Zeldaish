@@ -23,3 +23,4 @@
 // Project Headers
 #include "Error.h"
 #include "States.h"
+#include "ZeldaishFunctions.h"

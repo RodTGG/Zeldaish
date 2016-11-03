@@ -21,6 +21,11 @@ ZeldaishObject::~ZeldaishObject()
 {
 }
 
+SDL_Rect ZeldaishObject::getRectangle() 
+{
+	return *imageArea;
+}
+
 int ZeldaishObject::getX() 
 {
 	return imageArea->x;

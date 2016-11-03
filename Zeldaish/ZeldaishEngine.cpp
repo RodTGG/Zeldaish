@@ -5,6 +5,8 @@
 
 ZeldaishEngine::ZeldaishEngine()
 {
+	myButton = new Button("Button Play", "btn_play.png", 20, 20, 150, 100);
+	zeldaFunctions = new ZeldaishFunctions();
 	gWindow = NULL;
 	gScreenSurface = NULL;
 	SplashScreen = NULL;
@@ -17,6 +19,7 @@ ZeldaishEngine::~ZeldaishEngine()
 
 void ZeldaishEngine::display()
 {
+	// Clear Screen
 	SDL_FillRect(gScreenSurface, NULL, 0x000000);
 }
 
@@ -34,6 +37,16 @@ void ZeldaishEngine::handleInput()
 			if (e.type == SDL_QUIT)
 			{
 				quit = true;
+			}
+			else if (e.type == SDL_MOUSEBUTTONDOWN) 
+			{
+				int x, y;
+				SDL_GetMouseState(&x, &y);
+				
+				if (e.button.button == SDL_BUTTON_LEFT && zeldaFunctions->isOver(x,y,myButton->getRectangle())) 
+				{
+					quit = true;
+				}
 			}
 		}
 	}
@@ -65,7 +78,6 @@ void ZeldaishEngine::setup()
 	load();
 	display();
 
-	Button* myButton = new Button("Button Play", "btn_play.png", 20, 20, 150, 100);
 	myButton->Display(gScreenSurface);
 
 	update();
@@ -102,8 +114,6 @@ void ZeldaishEngine::init()
 
 void ZeldaishEngine::close()
 {
-	//Deallocate surface
-	SDL_FreeSurface(SplashScreen);
 	SplashScreen = NULL;
 
 	//Destroy window
