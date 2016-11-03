@@ -1,9 +1,9 @@
 #include "stdafx.h"
-#include "GameEngine.h"
+#include "ZeldaishEngine.h"
 
 int main(int argc, char *argv[])
 {
-	GameEngine* myGame = new GameEngine();
+	ZeldaishEngine* myGame = new ZeldaishEngine();
 	myGame->setup();
 
 	return 0;

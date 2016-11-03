@@ -1,9 +1,11 @@
 #pragma once
-class GameEngine
+#include "State.h"
+
+class ZeldaishEngine
 {
 public:
-	GameEngine();
-	~GameEngine();
+	ZeldaishEngine();
+	~ZeldaishEngine();
 
 	void init();
 	void setup();
@@ -14,13 +16,15 @@ public:
 	void update();
 	void display();
 private:
+	State* currentState;
+
 	//The window we'll be rendering to
-	SDL_Window* gWindow = NULL;
+	SDL_Window* gWindow;
 
 	//The surface contained by the window
-	SDL_Surface* gScreenSurface = NULL;
+	SDL_Surface* gScreenSurface;
 
 	//The image we will load and show on the screen
-	SDL_Surface* gHelloWorld = NULL;
+	SDL_Surface* SplashScreen;
 };
 

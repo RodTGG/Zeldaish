@@ -1,23 +1,26 @@
 #include "stdafx.h"
-#include "GameEngine.h"
+#include "ZeldaishEngine.h"
 #include "Button.h"
 
 
-GameEngine::GameEngine()
+ZeldaishEngine::ZeldaishEngine()
 {
+	gWindow = NULL;
+	gScreenSurface = NULL;
+	SplashScreen = NULL;
 }
 
 
-GameEngine::~GameEngine()
+ZeldaishEngine::~ZeldaishEngine()
 {
 }
 
-void GameEngine::display() 
+void ZeldaishEngine::display()
 {
-
+	SDL_FillRect(gScreenSurface, NULL, 0x000000);
 }
 
-void GameEngine::handleInput() 
+void ZeldaishEngine::handleInput()
 {
 	bool quit = false;
 	SDL_Event e;
@@ -36,40 +39,41 @@ void GameEngine::handleInput()
 	}
 }
 
-void GameEngine::update() 
+void ZeldaishEngine::update()
 {
 	SDL_UpdateWindowSurface(gWindow);
 }
 
-void GameEngine::load() 
+void ZeldaishEngine::load()
 {
-
-	//Load splash image
-	gHelloWorld = IMG_Load("Resources/Splash.png");
-	if (gHelloWorld == NULL)
+	SplashScreen = IMG_Load("Resources/Splash.png");
+	if (SplashScreen == NULL)
 	{
 		printf("Unable to load image %s! SDL Error: %s\n", "Splash", IMG_GetError());
 		Error::Display("Error loading resource\n");
 	}
+	SDL_BlitScaled(SplashScreen, NULL, gScreenSurface, NULL);
+	SDL_UpdateWindowSurface(gWindow);
+
+	SDL_Delay(2000);
+	SDL_FreeSurface(SplashScreen);
 }
 
-void GameEngine::setup()
+void ZeldaishEngine::setup()
 {
 	init();
 	load();
+	display();
 
-	SDL_BlitScaled(gHelloWorld, NULL, gScreenSurface, NULL);
-
-	Button* myButton = new Button("Button Play" ,"Resources/btn_play.png", 20, 20, 150, 100);
+	Button* myButton = new Button("Button Play", "btn_play.png", 20, 20, 150, 100);
 	myButton->Display(gScreenSurface);
 
-	
+	update();
 	handleInput();
-
 	close();
 }
 
-void GameEngine::init()
+void ZeldaishEngine::init()
 {
 
 	//Initialize SDL
@@ -96,11 +100,11 @@ void GameEngine::init()
 	IMG_Init(IMG_INIT_PNG);
 }
 
-void GameEngine::close() 
+void ZeldaishEngine::close()
 {
 	//Deallocate surface
-	SDL_FreeSurface(gHelloWorld);
-	gHelloWorld = NULL;
+	SDL_FreeSurface(SplashScreen);
+	SplashScreen = NULL;
 
 	//Destroy window
 	SDL_DestroyWindow(gWindow);

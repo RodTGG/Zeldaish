@@ -4,7 +4,6 @@
 /// Error class.
 /// Displays message and exits program
 ///	Error returns 1
-
 class Error
 {
 public:
