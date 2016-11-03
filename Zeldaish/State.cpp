@@ -13,5 +13,5 @@ State::~State()
 
 int State::getID()
 {
-	return id_;
+	return id;
 }

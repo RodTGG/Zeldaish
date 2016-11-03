@@ -38,7 +38,7 @@ void GameEngine::handleInput()
 
 void GameEngine::update() 
 {
-
+	SDL_UpdateWindowSurface(gWindow);
 }
 
 void GameEngine::load() 
@@ -63,7 +63,7 @@ void GameEngine::setup()
 	Button* myButton = new Button("Button Play" ,"Resources/btn_play.png", 20, 20, 150, 100);
 	myButton->Display(gScreenSurface);
 
-	SDL_UpdateWindowSurface(gWindow);
+	
 	handleInput();
 
 	close();

@@ -7,7 +7,7 @@ public:
 	MainMenuState();
 	~MainMenuState();
 
-	void display() override;
-	int handleEvent() override;
+	void Display() override;
+	int HandleEvent() override;
 };
 

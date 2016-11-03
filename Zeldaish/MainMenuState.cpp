@@ -4,19 +4,19 @@
 
 MainMenuState::MainMenuState()
 {
-	id_ = States::STATE_MAINMENU;
+	id = States::STATE_MAINMENU;
 }
 
 MainMenuState::~MainMenuState()
 {
 }
 
-void MainMenuState::display() 
+void MainMenuState::Display() 
 {
 	
 }
 
-int MainMenuState::handleEvent() 
+int MainMenuState::HandleEvent() 
 {
 	return 0;
 }

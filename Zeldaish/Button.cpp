@@ -14,13 +14,19 @@ Button::Button(std::string aName,std::string aPath, int aX, int aY, int aW, int 
 
 void Button::Display(SDL_Surface* aSurface) 
 {
+	// Cheks if image path is null
 	if (image == NULL) 
 	{
 		Error::Display( name + " ,Unable to load SDL Surface");
 	}
-	SDL_BlitScaled(image, NULL, aSurface, imageArea);
+	else 
+	{
+		SDL_BlitScaled(image, NULL, aSurface, imageArea);
+	}
 }
 
 Button::~Button()
 {
+	delete image;
+	delete imageArea;
 }
