@@ -121,6 +121,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AboutState.cpp" />
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="ZeldaishEngine.cpp" />
     <ClCompile Include="MainMenuState.cpp" />
@@ -134,6 +135,7 @@
     <ClCompile Include="ZeldaishObject.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AboutState.h" />
     <ClInclude Include="Button.h" />
     <ClInclude Include="Error.h" />
     <ClInclude Include="ZeldaishEngine.h" />

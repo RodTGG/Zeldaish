@@ -22,3 +22,15 @@ bool ZeldaishFunctions::isOver(int& x, int& y, SDL_Rect& aArea)
 
 	return result;
 }
+
+bool ZeldaishFunctions::leftMouseButtonClicked(SDL_Event* aEvent)
+{
+	bool result = false;
+
+	if (aEvent->type == SDL_MOUSEBUTTONDOWN && aEvent->button.button == SDL_BUTTON_LEFT)
+	{
+		result = true;
+	}
+
+	return result;
+}

@@ -21,8 +21,8 @@ public:
 private:
 	bool exiting;
 
-	ZeldaishFunctions* zeldaFunctions;
-	StateManager* sManager;
+	ZeldaishFunctions* gFunctions;
+	StateManager* gStateManager;
 
 	//The window we'll be rendering to
 	SDL_Window* gWindow;

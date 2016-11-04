@@ -11,7 +11,7 @@ public:
 	void changeState();
 	ZeldaishState* getCurrentSate();
 private:
-	ZeldaishState* currentSate;
-	ZeldaishState* nextState;
+	ZeldaishState* gCurrentSate;
+	ZeldaishState* gNextState;
 };
 

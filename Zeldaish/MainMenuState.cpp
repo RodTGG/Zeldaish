@@ -4,8 +4,10 @@
 
 MainMenuState::MainMenuState()
 {
-	id = States::STATE_MAINMENU;
-	myButton = new Button("Button Play", "btn_play.png", 20, 20, 150, 100);
+	gId = States::STATE_MAINMENU;
+	btnPlay = new Button("Button Play", "btn_play.png", 20, 20, 150, 100);
+	btnAbout = new Button("Button About", "btn_about.png", 20, 140, 150, 100);
+	btnExit = new Button("Button Exit", "btn_exit.png", 20, 260, 150, 100);
 }
 
 MainMenuState::~MainMenuState()
@@ -14,24 +16,33 @@ MainMenuState::~MainMenuState()
 
 void MainMenuState::Display(SDL_Surface* aSurface)
 {
-	myButton->Display(aSurface);
+	btnPlay->Display(aSurface);
+	btnAbout->Display(aSurface);
+	btnExit->Display(aSurface);
 }
 
-int MainMenuState::HandleEvent(SDL_Event* aEvent)
+States MainMenuState::HandleEvent(SDL_Event* aEvent)
 {
-	//SDL_Event e;
+	States result;
+	int x, y;
+	SDL_GetMouseState(&x, &y);
 
-	////Handle events on queue
-	//SDL_PollEvent(&e);
-	if (aEvent->button.button == SDL_BUTTON_LEFT)
+	if(gFunctions->leftMouseButtonClicked(aEvent) && gFunctions->isOver(x, y, btnPlay->getRectangle()))
 	{
-		int x, y;
-		SDL_GetMouseState(&x, &y);
-
-		if (zFunctions->isOver(x, y, myButton->getRectangle()))
-		{
-			std::cout << "hello world";
-		}
+		result = States::STATE_GAMEPLAY;
 	}
-	return 0;
+	else if (gFunctions->leftMouseButtonClicked(aEvent) && gFunctions->isOver(x, y, btnAbout->getRectangle()))
+	{
+		result = States::STATE_ABOUT;
+	}
+	else if (gFunctions->leftMouseButtonClicked(aEvent) && gFunctions->isOver(x, y, btnExit->getRectangle()))
+	{
+		result = States::STATE_EXIT;
+	}
+	else
+	{
+		result = States::STATE_MAINMENU;
+	}
+
+	return result;
 }

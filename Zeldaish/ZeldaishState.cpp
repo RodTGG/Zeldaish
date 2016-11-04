@@ -4,12 +4,12 @@
 
 ZeldaishState::ZeldaishState()
 {
-	zFunctions = new ZeldaishFunctions();
+	gFunctions = new ZeldaishFunctions();
 }
 
 ZeldaishState::ZeldaishState(States aID)
 {
-	id = aID;
+	gId = aID;
 }
 
 
@@ -19,5 +19,5 @@ ZeldaishState::~ZeldaishState()
 
 States ZeldaishState::getID()
 {
-	return id;
+	return gId;
 }

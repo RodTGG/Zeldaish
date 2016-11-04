@@ -1,11 +1,12 @@
 #include "stdafx.h"
 #include "StateManager.h"
 #include "MainMenuState.h"
+#include "AboutState.h"
 
 
 StateManager::StateManager()
 {
-	currentSate = new MainMenuState();
+	gCurrentSate = new MainMenuState();
 }
 
 StateManager::~StateManager()
@@ -17,28 +18,33 @@ void StateManager::setNextState(States aState)
 	switch (aState)
 	{
 	case States::STATE_MAINMENU:
-		nextState = new MainMenuState();
+		gNextState = new MainMenuState();
 		break;
 	case States::STATE_ABOUT:
+		gNextState = new AboutState();
 		break;
 	case States::STATE_HELP:
 		break;
 	case States::STATE_GAMEPLAY:
 		break;
 	case States::STATE_EXIT:
+		
 		break;
 	default:
-		nextState = new MainMenuState();
+		gNextState = new MainMenuState();
 		break;
 	}
 }
 
 void StateManager::changeState() 
 {
-	currentSate = nextState;
+	if (gNextState != gCurrentSate)
+	{
+		gCurrentSate = gNextState;
+	}
 }
 
 ZeldaishState* StateManager::getCurrentSate()
 {
-	return currentSate;
+	return gCurrentSate;
 }

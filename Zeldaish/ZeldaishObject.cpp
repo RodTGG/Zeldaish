@@ -6,14 +6,14 @@ ZeldaishObject::ZeldaishObject(std::string aName, std::string aImgName, int aX, 
 {
 	std::string imagePath =  "Resources/" + aImgName;
 
-	image = new SDL_Surface();
-	imageArea = new SDL_Rect();
+	gImage = new SDL_Surface();
+	gImageArea = new SDL_Rect();
 
-	image = IMG_Load(imagePath.c_str());
-	imageArea->x = aX;
-	imageArea->y = aY;
-	imageArea->w = aW;
-	imageArea->h = aH;
+	gImage = IMG_Load(imagePath.c_str());
+	gImageArea->x = aX;
+	gImageArea->y = aY;
+	gImageArea->w = aW;
+	gImageArea->h = aH;
 }
 
 
@@ -23,45 +23,45 @@ ZeldaishObject::~ZeldaishObject()
 
 SDL_Rect ZeldaishObject::getRectangle() 
 {
-	return *imageArea;
+	return *gImageArea;
 }
 
 int ZeldaishObject::getX() 
 {
-	return imageArea->x;
+	return gImageArea->x;
 }
 
 int ZeldaishObject::getY()
 {
-	return imageArea->y;
+	return gImageArea->y;
 }
 
 int ZeldaishObject::getW()
 {
-	return imageArea->w;
+	return gImageArea->w;
 }
 
 int ZeldaishObject::getH()
 {
-	return imageArea->h;
+	return gImageArea->h;
 }
 
 void ZeldaishObject::setX(int aLocation)
 {
-	imageArea->x = aLocation;
+	gImageArea->x = aLocation;
 }
 
 void ZeldaishObject::setY(int aLocation)
 {
-	imageArea->y = aLocation;
+	gImageArea->y = aLocation;
 }
 
 void ZeldaishObject::setW(int aSize)
 {
-	imageArea->w = aSize;
+	gImageArea->w = aSize;
 }
 
 void ZeldaishObject::setH(int aSize)
 {
-	imageArea->h = aSize;
+	gImageArea->h = aSize;
 }

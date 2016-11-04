@@ -19,9 +19,9 @@ public:
 private:
 
 protected:
-	std::string name;
+	std::string gName;
 
-	SDL_Surface* image;
-	SDL_Rect* imageArea;
+	SDL_Surface* gImage;
+	SDL_Rect* gImageArea;
 };
 

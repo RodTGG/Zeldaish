@@ -2,18 +2,15 @@
 #include "ZeldaishState.h"
 #include "Button.h"
 
-class MainMenuState :
+class AboutState :
 	public ZeldaishState
 {
 public:
-	MainMenuState();
-	~MainMenuState();
+	AboutState();
+	~AboutState();
 
 	void Display(SDL_Surface* aSurface) override;
 	States HandleEvent(SDL_Event* aEvent) override;
 private:
-	Button* btnPlay;
-	Button* btnAbout;
-	Button* btnExit;
+	Button* btnBack;
 };
-

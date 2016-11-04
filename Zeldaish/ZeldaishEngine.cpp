@@ -5,8 +5,8 @@
 
 ZeldaishEngine::ZeldaishEngine()
 {
-	zeldaFunctions = new ZeldaishFunctions();
-	sManager = new StateManager();
+	gFunctions = new ZeldaishFunctions();
+	gStateManager = new StateManager();
 	gWindow = NULL;
 	gScreenSurface = NULL;
 	SplashScreen = NULL;
@@ -23,27 +23,35 @@ void ZeldaishEngine::display()
 	// Clear Screen
 	SDL_FillRect(gScreenSurface, NULL, 0x000000);
 
-	sManager->getCurrentSate()->Display(gScreenSurface);
+	gStateManager->getCurrentSate()->Display(gScreenSurface);
+
+	// Update window
+	SDL_UpdateWindowSurface(gWindow);
 }
 
 void ZeldaishEngine::handleEvent()
 {
 	SDL_Event* e = new SDL_Event();
 
-	while (!exiting)
+	//Handle events on queue
+	while (SDL_PollEvent(e) != 0)
 	{
-		//Handle events on queue
-		while (SDL_PollEvent(e) != 0)
+		//User requests quit
+		if (e->type == SDL_QUIT)
 		{
-			//User requests quit
-			if (e->type == SDL_QUIT)
+			exiting = true;
+			close();
+		}
+		else
+		{
+			States result = gStateManager->getCurrentSate()->HandleEvent(e);
+			if (result == States::STATE_EXIT)
 			{
 				exiting = true;
-				close();
 			}
 			else
 			{
-				sManager->getCurrentSate()->HandleEvent(e);
+				gStateManager->setNextState(result);
 			}
 		}
 	}
@@ -51,11 +59,12 @@ void ZeldaishEngine::handleEvent()
 
 void ZeldaishEngine::update()
 {
-	SDL_UpdateWindowSurface(gWindow);
+	gStateManager->changeState();
 }
 
 void ZeldaishEngine::load()
 {
+	// load image texture
 	SplashScreen = IMG_Load("Resources/Splash.png");
 	if (SplashScreen == NULL)
 	{
@@ -73,8 +82,6 @@ void ZeldaishEngine::setup()
 {
 	init();
 	load();
-	display();
-	update();
 }
 
 void ZeldaishEngine::init()
@@ -120,7 +127,7 @@ void ZeldaishEngine::close()
 	SDL_Quit();
 }
 
-bool ZeldaishEngine::isExiting() 
+bool ZeldaishEngine::isExiting()
 {
 	return exiting;
 }
