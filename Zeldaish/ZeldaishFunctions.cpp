@@ -11,7 +11,7 @@ ZeldaishFunctions::~ZeldaishFunctions()
 {
 }
 
-bool ZeldaishFunctions::isOver(int x, int y, SDL_Rect& aArea) 
+bool ZeldaishFunctions::isOver(int& x, int& y, SDL_Rect& aArea) 
 {
 	bool result = false;
 

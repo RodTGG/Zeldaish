@@ -15,6 +15,8 @@
 #include <stdio.h>
 #include <string>
 #include <vector>
+#include <thread>
+#include <mutex>
 
 // SDL Libraries
 #include "SDL.h"

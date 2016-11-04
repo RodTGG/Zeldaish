@@ -5,11 +5,12 @@
 
 ZeldaishEngine::ZeldaishEngine()
 {
-	myButton = new Button("Button Play", "btn_play.png", 20, 20, 150, 100);
 	zeldaFunctions = new ZeldaishFunctions();
+	sManager = new StateManager();
 	gWindow = NULL;
 	gScreenSurface = NULL;
 	SplashScreen = NULL;
+	exiting = false;
 }
 
 
@@ -21,32 +22,28 @@ void ZeldaishEngine::display()
 {
 	// Clear Screen
 	SDL_FillRect(gScreenSurface, NULL, 0x000000);
+
+	sManager->getCurrentSate()->Display(gScreenSurface);
 }
 
-void ZeldaishEngine::handleInput()
+void ZeldaishEngine::handleEvent()
 {
-	bool quit = false;
-	SDL_Event e;
+	SDL_Event* e = new SDL_Event();
 
-	while (!quit) 
+	while (!exiting)
 	{
 		//Handle events on queue
-		while (SDL_PollEvent(&e) != 0)
+		while (SDL_PollEvent(e) != 0)
 		{
 			//User requests quit
-			if (e.type == SDL_QUIT)
+			if (e->type == SDL_QUIT)
 			{
-				quit = true;
+				exiting = true;
+				close();
 			}
-			else if (e.type == SDL_MOUSEBUTTONDOWN) 
+			else
 			{
-				int x, y;
-				SDL_GetMouseState(&x, &y);
-				
-				if (e.button.button == SDL_BUTTON_LEFT && zeldaFunctions->isOver(x,y,myButton->getRectangle())) 
-				{
-					quit = true;
-				}
+				sManager->getCurrentSate()->HandleEvent(e);
 			}
 		}
 	}
@@ -77,12 +74,7 @@ void ZeldaishEngine::setup()
 	init();
 	load();
 	display();
-
-	myButton->Display(gScreenSurface);
-
 	update();
-	handleInput();
-	close();
 }
 
 void ZeldaishEngine::init()
@@ -96,7 +88,7 @@ void ZeldaishEngine::init()
 	else
 	{
 		//Create window
-		gWindow = SDL_CreateWindow("SDL Tutorial", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 600, SDL_WINDOW_SHOWN);
+		gWindow = SDL_CreateWindow("Zeldaish", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 600, SDL_WINDOW_SHOWN);
 
 		if (gWindow == NULL)
 		{
@@ -106,10 +98,13 @@ void ZeldaishEngine::init()
 		{
 			//Get window surface
 			gScreenSurface = SDL_GetWindowSurface(gWindow);
+
+			if (IMG_Init(IMG_INIT_PNG) < 0)
+			{
+				Error::Display("Could not initialize SDL IMG");
+			}
 		}
 	}
-
-	IMG_Init(IMG_INIT_PNG);
 }
 
 void ZeldaishEngine::close()
@@ -123,4 +118,9 @@ void ZeldaishEngine::close()
 	//Quit SDL and Image
 	IMG_Quit();
 	SDL_Quit();
+}
+
+bool ZeldaishEngine::isExiting() 
+{
+	return exiting;
 }

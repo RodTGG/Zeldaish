@@ -1,11 +1,17 @@
 #pragma once
-#include "States.h"
+#include "ZeldaishState.h"
 
 class StateManager
 {
 public:
 	StateManager();
 	~StateManager();
+
+	void setNextState(States aState);
+	void changeState();
+	ZeldaishState* getCurrentSate();
 private:
+	ZeldaishState* currentSate;
+	ZeldaishState* nextState;
 };
 

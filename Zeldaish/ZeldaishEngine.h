@@ -1,5 +1,5 @@
 #pragma once
-#include "State.h"
+#include "StateManager.h"
 #include "Button.h"
 
 class ZeldaishEngine
@@ -13,15 +13,16 @@ public:
 	void close();
 	void load();
 
-	void handleInput();
+	void handleEvent();
 	void update();
 	void display();
+
+	bool isExiting();
 private:
+	bool exiting;
+
 	ZeldaishFunctions* zeldaFunctions;
-
-	Button* myButton;
-
-	State* currentState;
+	StateManager* sManager;
 
 	//The window we'll be rendering to
 	SDL_Window* gWindow;
