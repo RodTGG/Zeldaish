@@ -25,7 +25,7 @@ private:
 	std::thread* gDisplayThread;
 	std::thread* gEventThread;
 
-	SDL_Event* e;
+	SDL_Renderer* gRenderer;
 	ZeldaishFunctions* gFunctions;
 	StateManager* gStateManager;
 
@@ -33,9 +33,9 @@ private:
 	SDL_Window* gWindow;
 
 	//The surface contained by the window
-	SDL_Surface* gScreenSurface;
+	//SDL_Texture* gScreenSurface;
 
 	//The image we will load and show on the screen
-	SDL_Surface* SplashScreen;
+	SDL_Texture* SplashScreen;
 };
 

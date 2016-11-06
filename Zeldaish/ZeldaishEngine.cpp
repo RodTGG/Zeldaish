@@ -5,13 +5,13 @@
 
 ZeldaishEngine::ZeldaishEngine()
 {
-	e = new SDL_Event();
 	gFunctions = new ZeldaishFunctions();
 	gStateManager = new StateManager();
 	gWindow = NULL;
-	gScreenSurface = NULL;
+	//gScreenSurface = NULL;
 	SplashScreen = NULL;
 	exiting = false;
+	gRenderer = NULL;
 }
 
 
@@ -21,17 +21,22 @@ ZeldaishEngine::~ZeldaishEngine()
 
 void ZeldaishEngine::display()
 {
-	std::cout << "Threaad display started";
+	std::cout << std::this_thread::get_id;
+	std::cout << ", Thread display started";
+
 	do
 	{
-		// Clear Screen
-		SDL_FillRect(gScreenSurface, NULL, 0x000000);
+		//Clear Screen
+		SDL_RenderClear(gRenderer);
 
-		gStateManager->getCurrentSate()->Display(gScreenSurface);
+		//Display
+		gStateManager->getCurrentSate()->Display(gRenderer);
 
-		// Update window
-		SDL_UpdateWindowSurface(gWindow);
-		std::this_thread::sleep_for(std::chrono::seconds(1));
+		//Update screen
+		SDL_RenderPresent(gRenderer);
+
+		//Sleep thread
+		std::this_thread::sleep_for(std::chrono::microseconds(50));
 
 	} while (!exiting);
 }
@@ -58,17 +63,15 @@ void ZeldaishEngine::update()
 void ZeldaishEngine::load()
 {
 	// load image texture
-	SplashScreen = IMG_Load("Resources/Splash.png");
-	if (SplashScreen == NULL)
-	{
-		printf("Unable to load image %s! SDL Error: %s\n", "Splash", IMG_GetError());
-		Error::Display("Error loading resource\n");
-	}
-	SDL_BlitScaled(SplashScreen, NULL, gScreenSurface, NULL);
-	SDL_UpdateWindowSurface(gWindow);
+	SplashScreen = gFunctions->loadTexture(*gRenderer,"Splash.png");
+	SDL_RenderCopy(gRenderer, SplashScreen,NULL,NULL);
+	SDL_RenderPresent(gRenderer);
 
-	SDL_Delay(2000);
-	SDL_FreeSurface(SplashScreen);
+	//Clear memory
+	SDL_DestroyTexture(SplashScreen);
+
+	SDL_Delay(1000);
+	SDL_RenderPresent(gRenderer);
 }
 
 void ZeldaishEngine::run()
@@ -89,6 +92,7 @@ void ZeldaishEngine::run()
 void ZeldaishEngine::setup()
 {
 	init();
+	SDL_RenderSetLogicalSize(gRenderer, 800, 600);
 	load();
 }
 
@@ -111,12 +115,18 @@ void ZeldaishEngine::init()
 		}
 		else
 		{
-			//Get window surface
-			gScreenSurface = SDL_GetWindowSurface(gWindow);
 
 			if (IMG_Init(IMG_INIT_PNG) < 0)
 			{
 				Error::Display("Could not initialize SDL IMG");
+			}
+			else 
+			{
+				gRenderer = SDL_CreateRenderer(gWindow, -1, SDL_RENDERER_ACCELERATED);
+				if (gRenderer == NULL)
+				{
+					Error::Display("unable to initialize renderer");
+				}
 			}
 		}
 	}
@@ -124,14 +134,12 @@ void ZeldaishEngine::init()
 
 void ZeldaishEngine::close()
 {
+	//Close Threads
 	gDisplayThread->join();
 	gEventThread->join();
 
-	SplashScreen = NULL;
-
-	//Destroy window
+	SDL_DestroyRenderer(gRenderer);
 	SDL_DestroyWindow(gWindow);
-	gWindow = NULL;
 
 	//Quit SDL and Image
 	IMG_Quit();

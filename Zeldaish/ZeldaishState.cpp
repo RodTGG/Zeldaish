@@ -6,6 +6,7 @@ ZeldaishState::ZeldaishState()
 {
 	e = new SDL_Event();
 	gFunctions = new ZeldaishFunctions();
+	gBackground = NULL;
 }
 
 ZeldaishState::ZeldaishState(States aID)

@@ -4,16 +4,15 @@
 
 ZeldaishObject::ZeldaishObject(std::string aName, std::string aImgName, int aX, int aY, int aW, int aH)
 {
-	std::string imagePath =  "Resources/" + aImgName;
-
-	gImage = new SDL_Surface();
+	gFunctions = new ZeldaishFunctions();
+	gImagePath =  aImgName;
 	gImageArea = new SDL_Rect();
-
-	gImage = IMG_Load(imagePath.c_str());
 	gImageArea->x = aX;
 	gImageArea->y = aY;
 	gImageArea->w = aW;
 	gImageArea->h = aH;
+
+	gTexture = NULL;
 }
 
 

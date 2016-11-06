@@ -29,7 +29,7 @@ public:
 	/// Displays the button to the specified surface.
 	/// </summary>
 	/// <param name="aSurface">a surface.</param>
-	void Display(SDL_Surface* aSurface);
+	void Display(SDL_Renderer* aRenderer);
 private:
 };
 

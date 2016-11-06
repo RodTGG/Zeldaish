@@ -1,4 +1,5 @@
 #pragma once
+#include "ZeldaishFunctions.h"
 
 class ZeldaishObject
 {
@@ -19,9 +20,11 @@ public:
 private:
 
 protected:
+	ZeldaishFunctions* gFunctions;
 	std::string gName;
+	std::string gImagePath;
 
-	SDL_Surface* gImage;
+	SDL_Texture* gTexture;
 	SDL_Rect* gImageArea;
 };
 

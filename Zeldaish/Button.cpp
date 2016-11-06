@@ -6,9 +6,12 @@ Button::Button(std::string aName, std::string aImgName, int aX, int aY, int aW, 
 {
 }
 
-void Button::Display(SDL_Surface* aSurface)
+void Button::Display(SDL_Renderer* aRenderer)
 {
-	SDL_BlitScaled(gImage, NULL, aSurface, gImageArea);
+	gTexture = gFunctions->loadTexture(*aRenderer, gImagePath);
+	SDL_RenderCopy(aRenderer, gTexture, NULL, gImageArea);
+
+	SDL_DestroyTexture(gTexture);
 }
 
 Button::~Button()

@@ -37,3 +37,29 @@ bool ZeldaishFunctions::leftMouseButtonClicked(SDL_Event& aEvent)
 
 	return result;
 }
+
+SDL_Texture* ZeldaishFunctions::loadTexture(SDL_Renderer& aRenderer,std::string aPath) 
+{
+	std::string fPath = "Resources/" + aPath;
+	SDL_Texture* result = NULL;
+	SDL_Surface* fSurface = IMG_Load(fPath.c_str());
+
+	if (fSurface == NULL)
+	{
+		printf("Unable to load image %s! SDL_image Error: %s\n", fPath.c_str(), IMG_GetError());
+	}
+	else
+	{
+		//Create texture from surface pixels
+		result = SDL_CreateTextureFromSurface(&aRenderer, fSurface);
+		if (result == NULL)
+		{
+			printf("Unable to create texture from %s! SDL Error: %s\n", fPath.c_str(), SDL_GetError());
+		}
+
+		//Get rid of old loaded surface
+		SDL_FreeSurface(fSurface);
+	}
+
+	return result;
+}

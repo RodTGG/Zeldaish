@@ -5,7 +5,7 @@
 AboutState::AboutState()
 {
 	gId = States::STATE_ABOUT;
-	btnBack = new Button("Button Play", "btn_play.png", 50, 50, 150, 100);
+	btnBack = new Button("Button Play", "btn_back.png", 5, 500, 150, 100);
 }
 
 
@@ -13,25 +13,40 @@ AboutState::~AboutState()
 {
 }
 
-void AboutState::Display(SDL_Surface* aSurface)
+void AboutState::Display(SDL_Renderer* aRenderer)
 {
-	btnBack->Display(aSurface);
+	
+	gBackground = gFunctions->loadTexture(*aRenderer, "about.png");
+	SDL_RenderCopy(aRenderer, gBackground,NULL,NULL);
+	btnBack->Display(aRenderer);
+
+	SDL_DestroyTexture(gBackground);
 }
 
 States AboutState::HandleEvent() 
 {
 	States result = STATE_NULL;
-	/*int x, y;
-	SDL_GetMouseState(&x, &y);
+	bool selected = false;
 
-	if (gFunctions->leftMouseButtonClicked(aEvent) && gFunctions->isOver(x, y, btnBack->getRectangle()))
-	{
-		result = States::STATE_MAINMENU;
-	}
-	else 
-	{
-		result = States::STATE_ABOUT;
-	}*/
+	do {
+		while (SDL_PollEvent(e) != 0)
+		{
+			if (e->type == SDL_QUIT)
+			{
+				result = STATE_EXIT;
+				selected = true;
+			}
+			else
+			{
+				if (gFunctions->leftMouseButtonClicked(*e) && gFunctions->isOver(btnBack->getRectangle()))
+				{
+					result = STATE_MAINMENU;
+					selected = true;
+				}
+			}
+			std::this_thread::sleep_for(std::chrono::microseconds(20));
+		}
+	} while (!selected);
 
 	return result;
 }

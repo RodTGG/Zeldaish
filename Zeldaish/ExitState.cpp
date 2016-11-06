@@ -12,10 +12,12 @@ ExitState::~ExitState()
 {
 }
 
-void ExitState::Display(SDL_Surface* aSurface)
+void ExitState::Display(SDL_Renderer* aRenderer)
 {
-	SDL_Surface exitSurface = *IMG_Load("Resources/exit.png");
-	SDL_BlitSurface(&exitSurface, NULL, aSurface, NULL);
+	gBackground = gFunctions->loadTexture(*aRenderer, "exit.png");
+	SDL_RenderCopy(aRenderer, gBackground, NULL, NULL);
+
+	SDL_DestroyTexture(gBackground);
 }
 
 States ExitState::HandleEvent()
