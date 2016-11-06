@@ -5,6 +5,7 @@
 
 ZeldaishEngine::ZeldaishEngine()
 {
+	e = new SDL_Event();
 	gFunctions = new ZeldaishFunctions();
 	gStateManager = new StateManager();
 	gWindow = NULL;
@@ -20,40 +21,32 @@ ZeldaishEngine::~ZeldaishEngine()
 
 void ZeldaishEngine::display()
 {
-	// Clear Screen
-	SDL_FillRect(gScreenSurface, NULL, 0x000000);
+	std::cout << "Threaad display started";
+	do
+	{
+		// Clear Screen
+		SDL_FillRect(gScreenSurface, NULL, 0x000000);
 
-	gStateManager->getCurrentSate()->Display(gScreenSurface);
+		gStateManager->getCurrentSate()->Display(gScreenSurface);
 
-	// Update window
-	SDL_UpdateWindowSurface(gWindow);
+		// Update window
+		SDL_UpdateWindowSurface(gWindow);
+		std::this_thread::sleep_for(std::chrono::seconds(1));
+
+	} while (!exiting);
 }
 
 void ZeldaishEngine::handleEvent()
 {
-	SDL_Event* e = new SDL_Event();
+	States result = STATE_NULL;
 
-	//Handle events on queue
-	while (SDL_PollEvent(e) != 0)
+
+	result = gStateManager->getCurrentSate()->HandleEvent();
+	gStateManager->setNextState(result);
+
+	if (exiting)
 	{
-		//User requests quit
-		if (e->type == SDL_QUIT)
-		{
-			exiting = true;
-			close();
-		}
-		else
-		{
-			States result = gStateManager->getCurrentSate()->HandleEvent(e);
-			if (result == States::STATE_EXIT)
-			{
-				exiting = true;
-			}
-			else
-			{
-				gStateManager->setNextState(result);
-			}
-		}
+		close();
 	}
 }
 
@@ -76,6 +69,21 @@ void ZeldaishEngine::load()
 
 	SDL_Delay(2000);
 	SDL_FreeSurface(SplashScreen);
+}
+
+void ZeldaishEngine::run()
+{
+	gDisplayThread = new std::thread(&ZeldaishEngine::display, this);
+	//gEventThread = new std::thread(&ZeldaishEngine::checkEvent, this);
+	//std::thread update();
+	//std::thread input();
+
+	do
+	{
+		//display();
+		handleEvent();
+		update();
+	} while (!isExiting());
 }
 
 void ZeldaishEngine::setup()
@@ -116,6 +124,9 @@ void ZeldaishEngine::init()
 
 void ZeldaishEngine::close()
 {
+	gDisplayThread->join();
+	gEventThread->join();
+
 	SplashScreen = NULL;
 
 	//Destroy window

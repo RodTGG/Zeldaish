@@ -49,7 +49,10 @@
       <Filter>Source Files\States</Filter>
     </ClCompile>
     <ClCompile Include="AboutState.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\States</Filter>
+    </ClCompile>
+    <ClCompile Include="ExitState.cpp">
+      <Filter>Source Files\States</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -87,7 +90,10 @@
       <Filter>Header Files\States</Filter>
     </ClInclude>
     <ClInclude Include="AboutState.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\States</Filter>
+    </ClInclude>
+    <ClInclude Include="ExitState.h">
+      <Filter>Header Files\States</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -1,16 +1,15 @@
 #pragma once
 #include "ZeldaishState.h"
-#include "Button.h"
-
-class AboutState :
+class ExitState :
 	public ZeldaishState
 {
 public:
-	AboutState();
-	~AboutState();
+	ExitState();
+	~ExitState();
 
 	void Display(SDL_Surface* aSurface) override;
 	States HandleEvent() override;
 private:
-	Button* btnBack;
+
 };
+

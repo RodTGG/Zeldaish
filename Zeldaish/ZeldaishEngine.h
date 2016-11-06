@@ -16,11 +16,16 @@ public:
 	void handleEvent();
 	void update();
 	void display();
+	void run();
 
 	bool isExiting();
 private:
 	bool exiting;
 
+	std::thread* gDisplayThread;
+	std::thread* gEventThread;
+
+	SDL_Event* e;
 	ZeldaishFunctions* gFunctions;
 	StateManager* gStateManager;
 

@@ -10,4 +10,5 @@ enum States
 	STATE_HELP,
 	STATE_GAMEPLAY,
 	STATE_EXIT,
+	STATE_NULL,
 };

@@ -10,7 +10,7 @@ public:
 	~MainMenuState();
 
 	void Display(SDL_Surface* aSurface) override;
-	States HandleEvent(SDL_Event* aEvent) override;
+	States HandleEvent() override;
 private:
 	Button* btnPlay;
 	Button* btnAbout;

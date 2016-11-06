@@ -123,6 +123,7 @@
   <ItemGroup>
     <ClCompile Include="AboutState.cpp" />
     <ClCompile Include="Button.cpp" />
+    <ClCompile Include="ExitState.cpp" />
     <ClCompile Include="ZeldaishEngine.cpp" />
     <ClCompile Include="MainMenuState.cpp" />
     <ClCompile Include="Source.cpp" />
@@ -138,6 +139,7 @@
     <ClInclude Include="AboutState.h" />
     <ClInclude Include="Button.h" />
     <ClInclude Include="Error.h" />
+    <ClInclude Include="ExitState.h" />
     <ClInclude Include="ZeldaishEngine.h" />
     <ClInclude Include="MainMenuState.h" />
     <ClInclude Include="ZeldaishState.h" />

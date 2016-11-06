@@ -2,11 +2,13 @@
 #include "StateManager.h"
 #include "MainMenuState.h"
 #include "AboutState.h"
+#include "ExitState.h"
 
 
 StateManager::StateManager()
 {
 	gCurrentSate = new MainMenuState();
+	gNextState = new MainMenuState();
 }
 
 StateManager::~StateManager()
@@ -28,10 +30,7 @@ void StateManager::setNextState(States aState)
 	case States::STATE_GAMEPLAY:
 		break;
 	case States::STATE_EXIT:
-		
-		break;
-	default:
-		gNextState = new MainMenuState();
+		gNextState = new ExitState();
 		break;
 	}
 }

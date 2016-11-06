@@ -11,9 +11,12 @@ ZeldaishFunctions::~ZeldaishFunctions()
 {
 }
 
-bool ZeldaishFunctions::isOver(int& x, int& y, SDL_Rect& aArea) 
+bool ZeldaishFunctions::isOver(SDL_Rect& aArea) 
 {
+	int x, y;
 	bool result = false;
+
+	SDL_GetMouseState(&x, &y);
 
 	if ((x > aArea.x) && (x < aArea.x + aArea.w) && (y > aArea.y) && (y < aArea.y + aArea.h))
 	{
@@ -23,11 +26,11 @@ bool ZeldaishFunctions::isOver(int& x, int& y, SDL_Rect& aArea)
 	return result;
 }
 
-bool ZeldaishFunctions::leftMouseButtonClicked(SDL_Event* aEvent)
+bool ZeldaishFunctions::leftMouseButtonClicked(SDL_Event& aEvent)
 {
 	bool result = false;
 
-	if (aEvent->type == SDL_MOUSEBUTTONDOWN && aEvent->button.button == SDL_BUTTON_LEFT)
+	if (aEvent.type == SDL_MOUSEBUTTONDOWN && aEvent.button.button == SDL_BUTTON_LEFT)
 	{
 		result = true;
 	}

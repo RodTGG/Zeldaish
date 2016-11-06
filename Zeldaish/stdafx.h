@@ -17,6 +17,7 @@
 #include <vector>
 #include <thread>
 #include <mutex>
+#include <chrono>
 
 // SDL Libraries
 #include "SDL.h"

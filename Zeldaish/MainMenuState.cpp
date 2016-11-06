@@ -21,28 +21,45 @@ void MainMenuState::Display(SDL_Surface* aSurface)
 	btnExit->Display(aSurface);
 }
 
-States MainMenuState::HandleEvent(SDL_Event* aEvent)
+States MainMenuState::HandleEvent()
 {
-	States result;
-	int x, y;
-	SDL_GetMouseState(&x, &y);
+	States result = STATE_MAINMENU;
+	bool selected = false;
 
-	if(gFunctions->leftMouseButtonClicked(aEvent) && gFunctions->isOver(x, y, btnPlay->getRectangle()))
-	{
-		result = States::STATE_GAMEPLAY;
-	}
-	else if (gFunctions->leftMouseButtonClicked(aEvent) && gFunctions->isOver(x, y, btnAbout->getRectangle()))
-	{
-		result = States::STATE_ABOUT;
-	}
-	else if (gFunctions->leftMouseButtonClicked(aEvent) && gFunctions->isOver(x, y, btnExit->getRectangle()))
-	{
-		result = States::STATE_EXIT;
-	}
-	else
-	{
-		result = States::STATE_MAINMENU;
-	}
+	do {
+		while (SDL_PollEvent(e) != 0)
+		{
+			if (e->type == SDL_QUIT)
+			{
+				result = STATE_EXIT;
+				selected = true;
+			}
+
+
+			gFunctions->isOver(btnPlay->getRectangle());
+
+			if (gFunctions->leftMouseButtonClicked(*e) && gFunctions->isOver(btnPlay->getRectangle()))
+			{
+				result = STATE_GAMEPLAY;
+				selected = true;
+			}
+			else if (gFunctions->leftMouseButtonClicked(*e) && gFunctions->isOver(btnAbout->getRectangle()))
+			{
+				result = STATE_ABOUT;
+				selected = true;
+			}
+			else if (gFunctions->leftMouseButtonClicked(*e) && gFunctions->isOver(btnExit->getRectangle()))
+			{
+				result = STATE_EXIT;
+				selected = true;
+			}
+
+
+
+			std::this_thread::sleep_for(std::chrono::microseconds(20));
+		}
+	} while (!selected);
+
 
 	return result;
 }

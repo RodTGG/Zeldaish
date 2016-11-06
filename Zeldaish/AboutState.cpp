@@ -18,10 +18,10 @@ void AboutState::Display(SDL_Surface* aSurface)
 	btnBack->Display(aSurface);
 }
 
-States AboutState::HandleEvent(SDL_Event* aEvent) 
+States AboutState::HandleEvent() 
 {
-	States result;
-	int x, y;
+	States result = STATE_NULL;
+	/*int x, y;
 	SDL_GetMouseState(&x, &y);
 
 	if (gFunctions->leftMouseButtonClicked(aEvent) && gFunctions->isOver(x, y, btnBack->getRectangle()))
@@ -31,7 +31,7 @@ States AboutState::HandleEvent(SDL_Event* aEvent)
 	else 
 	{
 		result = States::STATE_ABOUT;
-	}
+	}*/
 
 	return result;
 }
