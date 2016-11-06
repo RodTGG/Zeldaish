@@ -22,7 +22,7 @@ ZeldaishEngine::~ZeldaishEngine()
 void ZeldaishEngine::display()
 {
 	std::cout << std::this_thread::get_id;
-	std::cout << ", Thread display started";
+	std::cout << ", Thread display started" << std::endl;
 
 	do
 	{

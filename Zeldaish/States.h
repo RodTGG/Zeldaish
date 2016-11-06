@@ -2,7 +2,6 @@
 /// <summary>
 /// Available game states
 /// </summary>
-
 enum States
 {
 	STATE_MAINMENU,

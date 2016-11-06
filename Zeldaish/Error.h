@@ -6,13 +6,15 @@
 ///	Error returns 1
 class Error
 {
-public:
-	Error() {};
-
-	static void Display(std::string aMsg)
+public:	
+	/// <summary>
+	/// Displays the specified message and exits.
+	/// </summary>
+	/// <param name="aMsg">a message.</param>
+	static void Display(std::string aMessage)
 	{
 		system("color 04");
-		std::cout << aMsg << std::endl;
+		std::cout << aMessage << std::endl;
 		exit(1);
 	}
 };
