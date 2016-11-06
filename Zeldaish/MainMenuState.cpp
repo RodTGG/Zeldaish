@@ -16,7 +16,7 @@ MainMenuState::~MainMenuState()
 
 void MainMenuState::Display(SDL_Renderer* aRenderer)
 {
-	gBackground = gFunctions->loadTexture(*aRenderer, "menu_background.png");
+	gBackground = ZeldaishFunctions::loadTexture(*aRenderer, "menu_background.png");
 	SDL_RenderCopy(aRenderer, gBackground, NULL, NULL);
 	btnPlay->Display(aRenderer);
 	btnAbout->Display(aRenderer);
@@ -41,17 +41,17 @@ States MainMenuState::HandleEvent()
 			}
 			else 
 			{
-				if (gFunctions->leftMouseButtonClicked(*e) && gFunctions->isOver(btnPlay->getRectangle()))
+				if (ZeldaishFunctions::leftMouseButtonClicked(*e) && ZeldaishFunctions::isOver(btnPlay->getRectangle()))
 				{
 					result = STATE_GAMEPLAY;
 					selected = true;
 				}
-				else if (gFunctions->leftMouseButtonClicked(*e) && gFunctions->isOver(btnAbout->getRectangle()))
+				else if (ZeldaishFunctions::leftMouseButtonClicked(*e) && ZeldaishFunctions::isOver(btnAbout->getRectangle()))
 				{
 					result = STATE_ABOUT;
 					selected = true;
 				}
-				else if (gFunctions->leftMouseButtonClicked(*e) && gFunctions->isOver(btnExit->getRectangle()))
+				else if (ZeldaishFunctions::leftMouseButtonClicked(*e) && ZeldaishFunctions::isOver(btnExit->getRectangle()))
 				{
 					result = STATE_EXIT;
 					selected = true;

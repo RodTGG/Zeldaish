@@ -8,7 +8,7 @@ Button::Button(std::string aName, std::string aImgName, int aX, int aY, int aW, 
 
 void Button::Display(SDL_Renderer* aRenderer)
 {
-	gTexture = gFunctions->loadTexture(*aRenderer, gImagePath);
+	gTexture = ZeldaishFunctions::loadTexture(*aRenderer, gImagePath);
 	SDL_RenderCopy(aRenderer, gTexture, NULL, gImageArea);
 
 	SDL_DestroyTexture(gTexture);

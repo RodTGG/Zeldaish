@@ -82,9 +82,6 @@ private:
 	//renderer
 	SDL_Renderer* gRenderer;
 
-	//additional functions
-	ZeldaishFunctions* gFunctions;
-
 	//state manager
 	StateManager* gStateManager;
 

@@ -5,7 +5,6 @@
 
 ZeldaishEngine::ZeldaishEngine()
 {
-	gFunctions = new ZeldaishFunctions();
 	gStateManager = new StateManager();
 	gWindow = NULL;
 	//gScreenSurface = NULL;
@@ -63,7 +62,7 @@ void ZeldaishEngine::update()
 void ZeldaishEngine::load()
 {
 	// load image texture
-	SplashScreen = gFunctions->loadTexture(*gRenderer,"Splash.png");
+	SplashScreen = ZeldaishFunctions::loadTexture(*gRenderer,"Splash.png");
 	SDL_RenderCopy(gRenderer, SplashScreen,NULL,NULL);
 	SDL_RenderPresent(gRenderer);
 
@@ -100,7 +99,7 @@ void ZeldaishEngine::init()
 {
 
 	//Initialize SDL
-	if (SDL_Init(SDL_INIT_VIDEO) < 0)
+	if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO | SDL_INIT_EVENTS | SDL_INIT_TIMER) < 0)
 	{
 		Error::Display("SDL could not initialized");
 	}
@@ -126,6 +125,14 @@ void ZeldaishEngine::init()
 				if (gRenderer == NULL)
 				{
 					Error::Display("unable to initialize renderer");
+				}
+				else 
+				{
+					if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0) 
+					{
+						printf("SDL_mixer could not initialize! SDL_mixer Error: %s\n", Mix_GetError());
+						Error::Display("Error with mixer");
+					}
 				}
 			}
 		}

@@ -16,7 +16,7 @@ AboutState::~AboutState()
 void AboutState::Display(SDL_Renderer* aRenderer)
 {
 	
-	gBackground = gFunctions->loadTexture(*aRenderer, "about.png");
+	gBackground = ZeldaishFunctions::loadTexture(*aRenderer, "about.png");
 	SDL_RenderCopy(aRenderer, gBackground,NULL,NULL);
 	btnBack->Display(aRenderer);
 
@@ -38,7 +38,7 @@ States AboutState::HandleEvent()
 			}
 			else
 			{
-				if (gFunctions->leftMouseButtonClicked(*e) && gFunctions->isOver(btnBack->getRectangle()))
+				if (ZeldaishFunctions::leftMouseButtonClicked(*e) && ZeldaishFunctions::isOver(btnBack->getRectangle()))
 				{
 					result = STATE_MAINMENU;
 					selected = true;

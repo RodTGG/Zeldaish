@@ -14,7 +14,7 @@ ExitState::~ExitState()
 
 void ExitState::Display(SDL_Renderer* aRenderer)
 {
-	gBackground = gFunctions->loadTexture(*aRenderer, "exit.png");
+	gBackground = ZeldaishFunctions::loadTexture(*aRenderer, "exit.png");
 	SDL_RenderCopy(aRenderer, gBackground, NULL, NULL);
 
 	SDL_DestroyTexture(gBackground);

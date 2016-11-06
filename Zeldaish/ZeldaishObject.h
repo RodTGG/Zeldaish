@@ -77,9 +77,6 @@ public:
 private:
 
 protected:
-	// addtional functions
-	ZeldaishFunctions* gFunctions;
-
 	// object name
 	std::string gName;
 

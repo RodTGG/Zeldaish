@@ -33,8 +33,6 @@ private:
 protected:
 	SDL_Event* e;	//event for polling or waiting
 	SDL_Texture* gBackground; //background texture
-
-	ZeldaishFunctions* gFunctions; //additional functions
 	States gId; //id
 };
 

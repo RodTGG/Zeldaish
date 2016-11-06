@@ -75,12 +75,12 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <PrecompiledHeader>Use</PrecompiledHeader>
-      <AdditionalIncludeDirectories>C:\Temp\SDL2_image-2.0.1\include;C:\Temp\SDL2-2.0.5\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Temp\SDL2_mixer-2.0.1\include;C:\Temp\SDL2_image-2.0.1\include;C:\Temp\SDL2-2.0.5\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <BrowseInformation>true</BrowseInformation>
     </ClCompile>
     <Link>
-      <AdditionalLibraryDirectories>C:\Temp\SDL2_image-2.0.1\lib\x86;C:\Temp\SDL2-2.0.5\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2main.lib;SDL2.lib;SDL2_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\Temp\SDL2_mixer-2.0.1\lib\x86;C:\Temp\SDL2_image-2.0.1\lib\x86;C:\Temp\SDL2-2.0.5\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2main.lib;SDL2.lib;SDL2_image.lib;SDL2_mixer.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SubSystem>Console</SubSystem>
     </Link>
     <Bscmake>
@@ -124,6 +124,7 @@
     <ClCompile Include="AboutState.cpp" />
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="ExitState.cpp" />
+    <ClCompile Include="GamePlayState.cpp" />
     <ClCompile Include="ZeldaishEngine.cpp" />
     <ClCompile Include="MainMenuState.cpp" />
     <ClCompile Include="Source.cpp" />
@@ -140,6 +141,7 @@
     <ClInclude Include="Button.h" />
     <ClInclude Include="Error.h" />
     <ClInclude Include="ExitState.h" />
+    <ClInclude Include="GamePlayState.h" />
     <ClInclude Include="ZeldaishEngine.h" />
     <ClInclude Include="MainMenuState.h" />
     <ClInclude Include="ZeldaishState.h" />
