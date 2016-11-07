@@ -4,6 +4,7 @@
 
 MainMenuState::MainMenuState()
 {
+	gName = "MainMenu";
 	gId = States::STATE_MAINMENU;
 	btnPlay = new Button("Button Play", "btn_play.png", 350, 20, 150, 100);
 	btnAbout = new Button("Button About", "btn_about.png", 350, 140, 150, 100);

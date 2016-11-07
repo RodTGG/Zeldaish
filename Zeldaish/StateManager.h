@@ -26,6 +26,7 @@ public:
 	/// </summary>
 	/// <returns>a State class</returns>
 	ZeldaishState* getCurrentSate();
+	ZeldaishState* getNextState();
 private:
 	ZeldaishState* gCurrentSate;	//current state
 	ZeldaishState* gNextState;		//next state

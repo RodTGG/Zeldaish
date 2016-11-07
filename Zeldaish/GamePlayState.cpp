@@ -4,7 +4,7 @@
 
 GamePlayState::GamePlayState()
 {
-	
+	gName = "GamePlay";
 }
 
 

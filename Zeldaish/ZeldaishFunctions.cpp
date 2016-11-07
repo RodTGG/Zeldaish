@@ -1,17 +1,7 @@
 #include "stdafx.h"
 #include "ZeldaishFunctions.h"
 
-
-ZeldaishFunctions::ZeldaishFunctions()
-{
-}
-
-
-ZeldaishFunctions::~ZeldaishFunctions()
-{
-}
-
-bool ZeldaishFunctions::isOver(SDL_Rect& aArea) 
+bool ZeldaishFunctions::isOver(const SDL_Rect& aArea)
 {
 	int x, y;
 	bool result = false;
@@ -26,7 +16,7 @@ bool ZeldaishFunctions::isOver(SDL_Rect& aArea)
 	return result;
 }
 
-bool ZeldaishFunctions::leftMouseButtonClicked(SDL_Event& aEvent)
+bool ZeldaishFunctions::leftMouseButtonClicked(const SDL_Event& aEvent)
 {
 	bool result = false;
 
@@ -38,7 +28,7 @@ bool ZeldaishFunctions::leftMouseButtonClicked(SDL_Event& aEvent)
 	return result;
 }
 
-SDL_Texture* ZeldaishFunctions::loadTexture(SDL_Renderer& aRenderer,std::string aPath) 
+SDL_Texture* ZeldaishFunctions::loadTexture(SDL_Renderer& aRenderer, const std::string aPath)
 {
 	std::string fPath = "Resources/" + aPath;
 	SDL_Texture* result = NULL;
@@ -61,5 +51,7 @@ SDL_Texture* ZeldaishFunctions::loadTexture(SDL_Renderer& aRenderer,std::string 
 		SDL_FreeSurface(fSurface);
 	}
 
+	fSurface = nullptr;
+	
 	return result;
 }

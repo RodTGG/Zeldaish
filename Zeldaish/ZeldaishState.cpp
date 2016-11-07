@@ -18,6 +18,11 @@ ZeldaishState::~ZeldaishState()
 {
 }
 
+std::string ZeldaishState::getName()
+{
+	return gName;
+}
+
 States ZeldaishState::getID()
 {
 	return gId;

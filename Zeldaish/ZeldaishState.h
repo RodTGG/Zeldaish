@@ -28,9 +28,11 @@ public:
 	/// </summary>
 	/// <returns>State</returns>
 	States getID();
+	std::string getName();
 private:
 
 protected:
+	std::string gName;
 	SDL_Event* e;	//event for polling or waiting
 	SDL_Texture* gBackground; //background texture
 	States gId; //id

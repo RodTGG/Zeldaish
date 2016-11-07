@@ -2,7 +2,6 @@
 #include "StateManager.h"
 #include "MainMenuState.h"
 #include "AboutState.h"
-#include "ExitState.h"
 
 
 StateManager::StateManager()
@@ -30,7 +29,6 @@ void StateManager::setNextState(States aState)
 	case States::STATE_GAMEPLAY:
 		break;
 	case States::STATE_EXIT:
-		gNextState = new ExitState();
 		break;
 	}
 }
@@ -41,6 +39,11 @@ void StateManager::changeState()
 	{
 		gCurrentSate = gNextState;
 	}
+}
+
+ZeldaishState* StateManager::getNextState()
+{
+	return gNextState;
 }
 
 ZeldaishState* StateManager::getCurrentSate()
