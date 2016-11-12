@@ -28,7 +28,19 @@ public:
 	/// <param name="aH">a h.</param>
 	ZeldaishObject(std::string aName, std::string aImgName, int aX, int aY, int aW, int aH);
 	~ZeldaishObject();
-	
+		
+	/// <summary>
+	/// Gets the name.
+	/// </summary>
+	/// <returns></returns>
+	std::string getName();
+
+	/// <summary>
+	/// Gets the sdl rectangle.
+	/// </summary>
+	/// <returns>SDL Rectangle</returns>
+	SDL_Rect getRectangle();
+
 	/// <summary>
 	/// Gets the x.
 	/// </summary>
@@ -52,12 +64,6 @@ public:
 	/// </summary>
 	/// <returns>heihgt</returns>
 	int getH();
-	
-	/// <summary>
-	/// Gets the sdl rectangle.
-	/// </summary>
-	/// <returns>SDL Rectangle</returns>
-	SDL_Rect getRectangle();
 	
 	/// <summary>
 	/// Sets the x.

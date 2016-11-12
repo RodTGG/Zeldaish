@@ -28,6 +28,11 @@ ZeldaishObject::~ZeldaishObject()
 {
 }
 
+std::string ZeldaishObject::getName() 
+{
+	return gName;
+}
+
 SDL_Rect ZeldaishObject::getRectangle() 
 {
 	return *gImageArea;
