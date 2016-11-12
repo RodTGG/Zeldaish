@@ -11,3 +11,8 @@ GamePlayState::GamePlayState()
 GamePlayState::~GamePlayState()
 {
 }
+
+void GamePlayState::Update() 
+{
+
+}

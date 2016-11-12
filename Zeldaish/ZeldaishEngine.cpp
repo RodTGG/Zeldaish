@@ -54,12 +54,17 @@ void ZeldaishEngine::handleEvent()
 		exiting = true;
 		close();
 	}
+
+	std::cout << "Updating" << std::endl;
+	gStateManager->changeState();
 }
 
 void ZeldaishEngine::update()
 {
-	std::cout << "Updating" << std::endl;
-	gStateManager->changeState();
+	do
+	{
+		gStateManager->getCurrentSate()->Update();
+	} while (!exiting);
 }
 
 void ZeldaishEngine::load()
@@ -79,16 +84,12 @@ void ZeldaishEngine::run()
 {
 	std::cout << "Initializing display thread" << std::endl;
 	gDisplayThread = new std::thread(&ZeldaishEngine::display, this);
-	//gEventThread = new std::thread(&ZeldaishEngine::checkEvent, this);
-	//std::thread update();
-	//std::thread input();
+	gUpdateThread = new std::thread(&ZeldaishEngine::update, this);
 
 	std::cout << "Starting game loop" << std::endl;
 	do
 	{
-		//display();
 		handleEvent();
-		update();
 	} while (!isExiting());
 }
 
@@ -148,8 +149,8 @@ void ZeldaishEngine::close()
 	std::cout << "Joining Threads" << std::endl;
 	gDisplayThread->join();
 	std::cout << "display thread joined" << std::endl;
-	//gEventThread->join();
-	//std::cout << "event thread joined" << std::endl;
+	gUpdateThread->join();
+	std::cout << "update thread joined" << std::endl;
 
 	SDL_DestroyRenderer(gRenderer);
 	SDL_DestroyWindow(gWindow);

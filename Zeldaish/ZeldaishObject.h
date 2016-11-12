@@ -8,7 +8,15 @@
 /// </summary>
 class ZeldaishObject
 {
-public:	
+public:		
+	/// <summary>
+	/// Initializes a new instance of the <see cref="ZeldaishObject"/> class.
+	/// rectangle values default to 0
+	/// </summary>
+	/// <param name="aName">a name.</param>
+	/// <param name="aImgName">Name of a img.</param>
+	ZeldaishObject(std::string aName, std::string aImgName);
+
 	/// <summary>
 	/// Initializes a new instance of the <see cref="ZeldaishObject"/> class.
 	/// </summary>

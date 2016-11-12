@@ -6,6 +6,8 @@ class GamePlayState :
 public:
 	GamePlayState();
 	~GamePlayState();
+
+	void Update() override;
 private:
 	ZeldaishFunctions* gFunctions = new ZeldaishFunctions();
 };

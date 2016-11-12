@@ -15,6 +15,11 @@ MainMenuState::~MainMenuState()
 {
 }
 
+void MainMenuState::Update() 
+{
+
+}
+
 void MainMenuState::Display(SDL_Renderer* aRenderer)
 {
 	gBackground = ZeldaishFunctions::loadTexture(*aRenderer, "menu_background.png");

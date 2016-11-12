@@ -13,7 +13,12 @@ class MainMenuState :
 public:
 	MainMenuState();
 	~MainMenuState();
-	
+		
+	/// <summary>
+	/// Updates this instance.
+	/// </summary>
+	void Update() override;
+
 	/// <summary>
 	/// Displays the interface
 	/// </summary>

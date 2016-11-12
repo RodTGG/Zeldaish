@@ -10,7 +10,11 @@ public:
 	ZeldaishState();
 	ZeldaishState(States aId);
 	~ZeldaishState();
-
+	
+	/// <summary>
+	/// Updates this instance.
+	/// </summary>
+	virtual void Update() = 0;
 	/// <summary>
 	/// Displays the interface
 	/// </summary>

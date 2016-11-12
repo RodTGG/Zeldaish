@@ -54,6 +54,9 @@
     <ClCompile Include="GamePlayState.cpp">
       <Filter>Source Files\States</Filter>
     </ClCompile>
+    <ClCompile Include="Character.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -95,9 +98,33 @@
     <ClInclude Include="GamePlayState.h">
       <Filter>Header Files\States</Filter>
     </ClInclude>
+    <ClInclude Include="Character.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Resources\Player.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\about.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\btn_about.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\btn_back.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\btn_exit.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\btn_play.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\menu_background.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\Splash.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

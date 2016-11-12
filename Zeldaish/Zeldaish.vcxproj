@@ -123,6 +123,7 @@
   <ItemGroup>
     <ClCompile Include="AboutState.cpp" />
     <ClCompile Include="Button.cpp" />
+    <ClCompile Include="Character.cpp" />
     <ClCompile Include="GamePlayState.cpp" />
     <ClCompile Include="ZeldaishEngine.cpp" />
     <ClCompile Include="MainMenuState.cpp" />
@@ -138,6 +139,7 @@
   <ItemGroup>
     <ClInclude Include="AboutState.h" />
     <ClInclude Include="Button.h" />
+    <ClInclude Include="Character.h" />
     <ClInclude Include="Error.h" />
     <ClInclude Include="GamePlayState.h" />
     <ClInclude Include="ZeldaishEngine.h" />
@@ -151,7 +153,14 @@
     <ClInclude Include="ZeldaishObject.h" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="Resources\about.png" />
+    <Image Include="Resources\btn_about.png" />
+    <Image Include="Resources\btn_back.png" />
+    <Image Include="Resources\btn_exit.png" />
+    <Image Include="Resources\btn_play.png" />
+    <Image Include="Resources\menu_background.png" />
     <Image Include="Resources\Player.png" />
+    <Image Include="Resources\Splash.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

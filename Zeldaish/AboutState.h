@@ -13,7 +13,12 @@ class AboutState :
 public:
 	AboutState();
 	~AboutState();
-	
+		
+	/// <summary>
+	/// Updates this instance.
+	/// </summary>
+	void Update() override;
+
 	/// <summary>
 	/// Displays the about screen
 	/// </summary>

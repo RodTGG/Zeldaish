@@ -38,12 +38,12 @@ public:
 	
 	/// <summary>
 	/// Handles state event and sets next state.
+	/// calls for change state
 	/// </summary>
 	void handleEvent();
 	
 	/// <summary>
-	/// Updates this instance.
-	/// calls for change state
+	/// Calls update on State
 	/// </summary>
 	void update();
 	
@@ -76,8 +76,11 @@ private:
 	//display thread
 	std::thread* gDisplayThread;
 
+	//update thread
+	std::thread* gUpdateThread;
+
 	//event thread
-	std::thread* gEventThread;
+	//std::thread* gEventThread;
 
 	//renderer
 	SDL_Renderer* gRenderer;

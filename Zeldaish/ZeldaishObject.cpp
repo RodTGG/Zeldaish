@@ -1,6 +1,16 @@
 #include "stdafx.h"
 #include "ZeldaishObject.h"
 
+ZeldaishObject::ZeldaishObject(std::string aName, std::string aImgName)
+{
+	gImagePath = aImgName;
+	gImageArea = new SDL_Rect();
+	gImageArea->x = 0;
+	gImageArea->y = 0;
+	gImageArea->w = 0;
+	gImageArea->h = 0;
+	gTexture = NULL;
+}
 
 ZeldaishObject::ZeldaishObject(std::string aName, std::string aImgName, int aX, int aY, int aW, int aH)
 {
@@ -10,7 +20,6 @@ ZeldaishObject::ZeldaishObject(std::string aName, std::string aImgName, int aX, 
 	gImageArea->y = aY;
 	gImageArea->w = aW;
 	gImageArea->h = aH;
-
 	gTexture = NULL;
 }
 
