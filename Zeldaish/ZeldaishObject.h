@@ -72,6 +72,13 @@ public:
 	/// </summary>
 	/// <returns>heihgt</returns>
 	int getH();
+	
+	/// <summary>
+	/// Sets the position.
+	/// </summary>
+	/// <param name="aX">a x.</param>
+	/// <param name="aY">a y.</param>
+	void SetPosition(int aX, int aY);
 private:
 
 protected:

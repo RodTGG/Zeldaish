@@ -28,6 +28,24 @@ bool ZeldaishFunctions::leftMouseButtonClicked(const SDL_Event& aEvent)
 	return result;
 }
 
+bool ZeldaishFunctions::buttonDown(const SDL_Event& aEvent, SDL_Keycode aCode)
+{
+	bool result = false;
+
+	if (aEvent.type == SDL_KEYDOWN && aEvent.key.keysym.sym == aCode)
+	{
+		std::cout << "Key Down" << std::endl;
+		result = true;
+	}
+	else if(aEvent.type == SDL_KEYUP && aEvent.key.keysym.sym == aCode)
+	{
+		std::cout << "Key Up" << std::endl;
+		result == false;
+	}
+
+	return result;
+}
+
 SDL_Texture* ZeldaishFunctions::loadTexture(SDL_Renderer& aRenderer, const std::string aPath)
 {
 	std::string fPath = "Resources/" + aPath;

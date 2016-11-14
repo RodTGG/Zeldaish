@@ -5,6 +5,7 @@
 GamePlayState::GamePlayState()
 {
 	gName = "GamePlay";
+	gPlayer->setPlay(true);
 }
 
 
@@ -12,21 +13,17 @@ GamePlayState::~GamePlayState()
 {
 }
 
-void GamePlayState::Display(SDL_Renderer* aRenderer) 
+void GamePlayState::Display(SDL_Renderer* aRenderer)
 {
 	gPlayer->Display(aRenderer);
 }
 
-void GamePlayState::Update() 
+void GamePlayState::Update()
 {
 
 }
 
-void GamePlayState::Load(SDL_Renderer* aRenderer)
-{
-}
-
-States GamePlayState::HandleEvent(SDL_Renderer* aRenderer)
+States GamePlayState::HandleInput()
 {
 	States result = STATE_MAINMENU;
 	bool selected = false;
@@ -38,10 +35,45 @@ States GamePlayState::HandleEvent(SDL_Renderer* aRenderer)
 			{
 				result = STATE_EXIT;
 				selected = true;
+				gPlayer->setPlay(false);
 			}
-			std::this_thread::sleep_for(std::chrono::microseconds(20));
+			else if (ZeldaishFunctions::buttonDown(*e, SDLK_w))
+			{
+				gPlayer->SetPosition(gPlayer->getX(), gPlayer->getY() - gPlayer->getSpeed());
+				gPlayer->SetAnimation(2);
+			}
+			else if (ZeldaishFunctions::buttonDown(*e, SDLK_a))
+			{
+				gPlayer->SetPosition(gPlayer->getX() - gPlayer->getSpeed(), gPlayer->getY());
+				gPlayer->SetAnimation(3);
+			}
+			else if (ZeldaishFunctions::buttonDown(*e, SDLK_s))
+			{
+				gPlayer->SetPosition(gPlayer->getX(), gPlayer->getY() + gPlayer->getSpeed());
+				gPlayer->SetAnimation(1);
+			}
+			else if (ZeldaishFunctions::buttonDown(*e, SDLK_d))
+			{
+				gPlayer->SetPosition(gPlayer->getX() + gPlayer->getSpeed(), gPlayer->getY());
+				gPlayer->SetAnimation(4);
+			}
+			else
+			{
+				gPlayer->SetAnimation(0);
+			}
 		}
 	} while (!selected);
+
+	return result;
+}
+
+States GamePlayState::HandleEvent(SDL_Renderer* aRenderer)
+{
+	States result = STATE_MAINMENU;
+
+	std::thread animthread(&Player::PlayAnimation, gPlayer);
+	result = HandleInput();
+	animthread.join();
 
 	return result;
 }

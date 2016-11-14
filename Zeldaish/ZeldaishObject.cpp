@@ -65,3 +65,9 @@ SDL_Texture* ZeldaishObject::getTexture()
 {
 	return gTexture;
 }
+
+void ZeldaishObject::SetPosition(int aX, int aY) 
+{
+	gImageArea->x = aX;
+	gImageArea->y = aY;
+}

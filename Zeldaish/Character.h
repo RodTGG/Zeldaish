@@ -10,12 +10,14 @@ public:
 	Character(std::string aName, std::string aImgName, int aX,int aY,int aW,int aH);
 	~Character();
 
+	int getSpeed();
 	ItemContainer* getInventory();
 private:
 protected:
 	int gHp;
 	bool gAlive;
 	int gLevel;
+	int gSpeed;
 
 	ItemContainer* gInventory;
 };

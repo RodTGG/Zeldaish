@@ -6,6 +6,7 @@ Character::Character(std::string aName, std::string aImgName) : ZeldaishObject(a
 {
 	gHp = 100;
 	gAlive = true;
+	gSpeed = 2;
 	gInventory = new ItemContainer();
 	gLevel = 1;
 }
@@ -14,12 +15,18 @@ Character::Character(std::string aName, std::string aImgName, int aX, int aY, in
 {
 	gHp = 100;
 	gAlive = true;
+	gSpeed = 2;
 	gInventory = new ItemContainer();
 	gLevel = 1;
 }
 
 Character::~Character()
 {
+}
+
+int Character::getSpeed() 
+{
+	return gSpeed;
 }
 
 ItemContainer* Character::getInventory() 

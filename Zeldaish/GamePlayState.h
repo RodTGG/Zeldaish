@@ -8,8 +8,8 @@ class GamePlayState :
 public:
 	GamePlayState();
 	~GamePlayState();
-
-	void Load(SDL_Renderer* aRenderer);
+	
+	States HandleInput();
 	/// <summary>
 	/// Updates this instance.
 	/// </summary>

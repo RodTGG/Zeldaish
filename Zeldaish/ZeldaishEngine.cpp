@@ -7,7 +7,6 @@ ZeldaishEngine::ZeldaishEngine()
 {
 	gStateManager = new StateManager();
 	gWindow = NULL;
-	//gScreenSurface = NULL;
 	SplashScreen = NULL;
 	exiting = false;
 	gRenderer = NULL;
@@ -35,7 +34,7 @@ void ZeldaishEngine::display()
 		SDL_RenderPresent(gRenderer);
 
 		//Sleep thread
-		std::this_thread::sleep_for(std::chrono::microseconds(50));
+		std::this_thread::sleep_for(std::chrono::nanoseconds(50));
 
 	} while (!exiting);
 }
@@ -64,6 +63,9 @@ void ZeldaishEngine::update()
 	do
 	{
 		gStateManager->getCurrentSate()->Update();
+
+		//Sleep thread
+		std::this_thread::sleep_for(std::chrono::nanoseconds(50));
 	} while (!exiting);
 }
 
@@ -90,6 +92,7 @@ void ZeldaishEngine::run()
 	do
 	{
 		handleEvent();
+		std::this_thread::sleep_for(std::chrono::nanoseconds(50));
 	} while (!isExiting());
 }
 

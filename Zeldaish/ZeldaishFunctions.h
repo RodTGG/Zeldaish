@@ -24,7 +24,14 @@ public:
 	///<c>true</c> if mouse left button is pressed; otherwise, <c>false</c>
 	///</returns>
 	static bool leftMouseButtonClicked(const SDL_Event& aEvent);
-	
+		
+	/// <summary>
+	/// Buttons down.
+	/// </summary>
+	/// <param name="aEvent">a event.</param>
+	/// <returns></returns>
+	static bool buttonDown(const SDL_Event& aEvent, SDL_Keycode aCode);
+
 	/// <summary>
 	/// Turns surface to texture so that in can be used by renderer
 	/// automatically checks in resources folder
