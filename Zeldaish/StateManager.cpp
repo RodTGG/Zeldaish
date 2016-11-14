@@ -2,6 +2,7 @@
 #include "StateManager.h"
 #include "MainMenuState.h"
 #include "AboutState.h"
+#include "GamePlayState.h"
 
 
 StateManager::StateManager()
@@ -27,6 +28,7 @@ void StateManager::setNextState(States aState)
 	case States::STATE_HELP:
 		break;
 	case States::STATE_GAMEPLAY:
+		gNextState = new GamePlayState();
 		break;
 	case States::STATE_EXIT:
 		break;

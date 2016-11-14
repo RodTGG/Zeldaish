@@ -28,7 +28,9 @@ public:
 	/// <param name="aH">a h.</param>
 	ZeldaishObject(std::string aName, std::string aImgName, int aX, int aY, int aW, int aH);
 	~ZeldaishObject();
-		
+	
+	virtual void Display(SDL_Renderer* aRenderer);
+
 	/// <summary>
 	/// Gets the name.
 	/// </summary>
@@ -40,6 +42,12 @@ public:
 	/// </summary>
 	/// <returns>SDL Rectangle</returns>
 	SDL_Rect getRectangle();
+	
+	/// <summary>
+	/// Gets the texture.
+	/// </summary>
+	/// <returns>SDL_Texture</returns>
+	SDL_Texture* getTexture();
 
 	/// <summary>
 	/// Gets the x.
@@ -64,30 +72,6 @@ public:
 	/// </summary>
 	/// <returns>heihgt</returns>
 	int getH();
-	
-	/// <summary>
-	/// Sets the x.
-	/// </summary>
-	/// <param name="aLocation">a location.</param>
-	void setX(int aLocation);	
-
-	/// <summary>
-	/// Sets the y.
-	/// </summary>
-	/// <param name="aLocation">a location.</param>
-	void setY(int aLocation);
-	
-	/// <summary>
-	/// Sets the h.
-	/// </summary>
-	/// <param name="aSize">a size.</param>
-	void setH(int aSize);
-	
-	/// <summary>
-	/// Sets the w.
-	/// </summary>
-	/// <param name="aSize">a size.</param>
-	void setW(int aSize);
 private:
 
 protected:

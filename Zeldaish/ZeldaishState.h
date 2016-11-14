@@ -25,7 +25,7 @@ public:
 	/// Handles the event.
 	/// </summary>
 	/// <returns>next state</returns>
-	virtual States HandleEvent() = 0;
+	virtual States HandleEvent(SDL_Renderer* aRenderer) = 0;
 	
 	/// <summary>
 	/// Gets the identifier.

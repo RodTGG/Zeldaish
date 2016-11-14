@@ -29,7 +29,7 @@ void AboutState::Display(SDL_Renderer* aRenderer)
 	SDL_DestroyTexture(gBackground);
 }
 
-States AboutState::HandleEvent() 
+States AboutState::HandleEvent(SDL_Renderer* aRenderer)
 {
 	States result = STATE_NULL;
 	bool selected = false;

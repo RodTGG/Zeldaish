@@ -45,7 +45,7 @@ void ZeldaishEngine::handleEvent()
 	States result = STATE_NULL;
 
 	std::cout << "Handling event for " + gStateManager->getCurrentSate()->getName() << std::endl;
-	result = gStateManager->getCurrentSate()->HandleEvent();
+	result = gStateManager->getCurrentSate()->HandleEvent(gRenderer);
 	gStateManager->setNextState(result);
 	std::cout << "Setting next state: " + gStateManager->getNextState()->getName() << std::endl;
 

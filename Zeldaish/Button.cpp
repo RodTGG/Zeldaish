@@ -10,7 +10,6 @@ void Button::Display(SDL_Renderer* aRenderer)
 {
 	gTexture = ZeldaishFunctions::loadTexture(*aRenderer, gImagePath);
 	SDL_RenderCopy(aRenderer, gTexture, NULL, gImageArea);
-
 	SDL_DestroyTexture(gTexture);
 }
 

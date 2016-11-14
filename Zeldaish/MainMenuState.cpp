@@ -9,6 +9,7 @@ MainMenuState::MainMenuState()
 	btnPlay = new Button("Button Play", "btn_play.png", 350, 20, 150, 100);
 	btnAbout = new Button("Button About", "btn_about.png", 350, 140, 150, 100);
 	btnExit = new Button("Button Exit", "btn_exit.png", 350, 260, 150, 100);
+
 }
 
 MainMenuState::~MainMenuState()
@@ -32,7 +33,7 @@ void MainMenuState::Display(SDL_Renderer* aRenderer)
 	SDL_DestroyTexture(gBackground);
 }
 
-States MainMenuState::HandleEvent()
+States MainMenuState::HandleEvent(SDL_Renderer* aRenderer)
 {
 	States result = STATE_MAINMENU;
 	bool selected = false;

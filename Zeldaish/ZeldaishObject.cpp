@@ -9,7 +9,6 @@ ZeldaishObject::ZeldaishObject(std::string aName, std::string aImgName)
 	gImageArea->y = 0;
 	gImageArea->w = 0;
 	gImageArea->h = 0;
-	gTexture = NULL;
 }
 
 ZeldaishObject::ZeldaishObject(std::string aName, std::string aImgName, int aX, int aY, int aW, int aH)
@@ -23,6 +22,10 @@ ZeldaishObject::ZeldaishObject(std::string aName, std::string aImgName, int aX, 
 	gTexture = NULL;
 }
 
+void ZeldaishObject::Display(SDL_Renderer* aRenderer) 
+{
+	SDL_RenderCopy(aRenderer, gTexture, NULL, gImageArea);
+}
 
 ZeldaishObject::~ZeldaishObject()
 {
@@ -58,22 +61,7 @@ int ZeldaishObject::getH()
 	return gImageArea->h;
 }
 
-void ZeldaishObject::setX(int aLocation)
+SDL_Texture* ZeldaishObject::getTexture() 
 {
-	gImageArea->x = aLocation;
-}
-
-void ZeldaishObject::setY(int aLocation)
-{
-	gImageArea->y = aLocation;
-}
-
-void ZeldaishObject::setW(int aSize)
-{
-	gImageArea->w = aSize;
-}
-
-void ZeldaishObject::setH(int aSize)
-{
-	gImageArea->h = aSize;
+	return gTexture;
 }

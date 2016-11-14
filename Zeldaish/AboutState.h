@@ -29,7 +29,7 @@ public:
 	/// Handles the event.
 	/// </summary>
 	/// <returns>next state</returns>
-	States HandleEvent() override;
+	States HandleEvent(SDL_Renderer* aRenderer) override;
 private:	
 
 	/// <summary>
