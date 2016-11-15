@@ -1,6 +1,7 @@
 #pragma once
 #include "ZeldaishState.h"
 #include "Player.h"
+#include "ZeldaishHUD.h"
 
 class GamePlayState :
 	public ZeldaishState
@@ -27,7 +28,7 @@ public:
 	/// <returns>next state</returns>
 	States HandleEvent(SDL_Renderer* aRenderer) override;
 private:
-	ZeldaishFunctions* gFunctions = new ZeldaishFunctions();
-	Player* gPlayer = new Player("My Player", "Player.png");
+	Player* gPlayer;
+	ZeldaishHUD* gHud;
 };
 

@@ -44,7 +44,7 @@ States AboutState::HandleEvent(SDL_Renderer* aRenderer)
 			}
 			else
 			{
-				if (ZeldaishFunctions::leftMouseButtonClicked(*e) && ZeldaishFunctions::isOver(btnBack->getRectangle()))
+				if (ZeldaishFunctions::leftMouseButtonClicked(*e) && ZeldaishFunctions::isOver(*btnBack->getRectangle()))
 				{
 					result = STATE_MAINMENU;
 					selected = true;

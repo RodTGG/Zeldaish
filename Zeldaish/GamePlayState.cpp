@@ -5,6 +5,8 @@
 GamePlayState::GamePlayState()
 {
 	gName = "GamePlay";
+	gPlayer = new Player("My Player", "Player.png");
+	gHud = new ZeldaishHUD();
 	gPlayer->setPlay(true);
 }
 
@@ -15,12 +17,17 @@ GamePlayState::~GamePlayState()
 
 void GamePlayState::Display(SDL_Renderer* aRenderer)
 {
+	gBackground = ZeldaishFunctions::loadTexture(*aRenderer, "ground.png");
+	SDL_RenderCopy(aRenderer, gBackground, NULL, NULL);
 	gPlayer->Display(aRenderer);
+	gHud->Display(aRenderer, gPlayer);
+	//Clear memory
+	SDL_DestroyTexture(gBackground);
 }
 
 void GamePlayState::Update()
 {
-
+	gHud->Update(gPlayer);
 }
 
 States GamePlayState::HandleInput()

@@ -48,17 +48,17 @@ States MainMenuState::HandleEvent(SDL_Renderer* aRenderer)
 			}
 			else 
 			{
-				if (ZeldaishFunctions::leftMouseButtonClicked(*e) && ZeldaishFunctions::isOver(btnPlay->getRectangle()))
+				if (ZeldaishFunctions::leftMouseButtonClicked(*e) && ZeldaishFunctions::isOver(*btnPlay->getRectangle()))
 				{
 					result = STATE_GAMEPLAY;
 					selected = true;
 				}
-				else if (ZeldaishFunctions::leftMouseButtonClicked(*e) && ZeldaishFunctions::isOver(btnAbout->getRectangle()))
+				else if (ZeldaishFunctions::leftMouseButtonClicked(*e) && ZeldaishFunctions::isOver(*btnAbout->getRectangle()))
 				{
 					result = STATE_ABOUT;
 					selected = true;
 				}
-				else if (ZeldaishFunctions::leftMouseButtonClicked(*e) && ZeldaishFunctions::isOver(btnExit->getRectangle()))
+				else if (ZeldaishFunctions::leftMouseButtonClicked(*e) && ZeldaishFunctions::isOver(*btnExit->getRectangle()))
 				{
 					result = STATE_EXIT;
 					selected = true;

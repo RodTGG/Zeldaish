@@ -131,6 +131,7 @@
     <ClCompile Include="ZeldaishEngine.cpp" />
     <ClCompile Include="MainMenuState.cpp" />
     <ClCompile Include="Source.cpp" />
+    <ClCompile Include="ZeldaishHUD.cpp" />
     <ClCompile Include="ZeldaishState.cpp" />
     <ClCompile Include="StateManager.cpp" />
     <ClCompile Include="stdafx.cpp">
@@ -150,6 +151,7 @@
     <ClInclude Include="Player.h" />
     <ClInclude Include="ZeldaishEngine.h" />
     <ClInclude Include="MainMenuState.h" />
+    <ClInclude Include="ZeldaishHUD.h" />
     <ClInclude Include="ZeldaishState.h" />
     <ClInclude Include="StateManager.h" />
     <ClInclude Include="States.h" />

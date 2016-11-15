@@ -11,6 +11,7 @@ bool ZeldaishFunctions::isOver(const SDL_Rect& aArea)
 	if ((x > aArea.x) && (x < aArea.x + aArea.w) && (y > aArea.y) && (y < aArea.y + aArea.h))
 	{
 		result = true;
+		std::cout << "Mouse is over" << std::endl;
 	}
 
 	return result;
@@ -23,6 +24,7 @@ bool ZeldaishFunctions::leftMouseButtonClicked(const SDL_Event& aEvent)
 	if (aEvent.type == SDL_MOUSEBUTTONDOWN && aEvent.button.button == SDL_BUTTON_LEFT)
 	{
 		result = true;
+		std::cout << "Mouse clicked" << std::endl;
 	}
 
 	return result;

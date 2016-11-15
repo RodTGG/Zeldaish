@@ -5,6 +5,7 @@ class Item :
 {
 public:
 	Item(std::string aName, std::string aImgName);
+	Item(std::string aName, std::string aImgName, SDL_Rect* aRect);
 	~Item();
 };
 

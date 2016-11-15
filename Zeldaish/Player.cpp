@@ -96,6 +96,15 @@ Player::Player(std::string aName, std::string aImgName) : Character(aName, aImgN
 	gClips[15].w = 301;
 	gClips[15].h = 426;
 
+	SDL_Rect* gunRect = new SDL_Rect();
+	gunRect->x = 16;
+	gunRect->y = 16;
+	gunRect->w = 50;
+	gunRect->h = 38;
+
+	Item* fRuger = new Item("Ruger", "guns.png", gunRect);
+	gInventory->AddItem(fRuger);
+	fRuger = nullptr;
 
 	gAnimation = 0;
 	gCurrentClip = gClips[0];
@@ -179,4 +188,9 @@ bool Player::isPlaying()
 void Player::setPlay(bool aState)
 {
 	gPlaying = aState;
+}
+
+int Player::getLives() 
+{
+	return gLives;
 }

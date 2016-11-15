@@ -37,11 +37,13 @@ public:
 	/// <returns></returns>
 	std::string getName();
 
+	void setImagePath(std::string aName);
+
 	/// <summary>
 	/// Gets the sdl rectangle.
 	/// </summary>
 	/// <returns>SDL Rectangle</returns>
-	SDL_Rect getRectangle();
+	SDL_Rect* getRectangle();
 	
 	/// <summary>
 	/// Gets the texture.
@@ -79,6 +81,8 @@ public:
 	/// <param name="aX">a x.</param>
 	/// <param name="aY">a y.</param>
 	void SetPosition(int aX, int aY);
+
+	SDL_Rect* getClip();
 private:
 
 protected:
@@ -93,5 +97,8 @@ protected:
 
 	// area of texture
 	SDL_Rect* gImageArea;
+
+	// area in image
+	SDL_Rect* gClip;
 };
 

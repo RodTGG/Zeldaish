@@ -9,6 +9,7 @@ ZeldaishObject::ZeldaishObject(std::string aName, std::string aImgName)
 	gImageArea->y = 0;
 	gImageArea->w = 0;
 	gImageArea->h = 0;
+	gClip = NULL;
 }
 
 ZeldaishObject::ZeldaishObject(std::string aName, std::string aImgName, int aX, int aY, int aW, int aH)
@@ -20,11 +21,23 @@ ZeldaishObject::ZeldaishObject(std::string aName, std::string aImgName, int aX, 
 	gImageArea->w = aW;
 	gImageArea->h = aH;
 	gTexture = NULL;
+	gClip = NULL;
 }
 
 void ZeldaishObject::Display(SDL_Renderer* aRenderer) 
 {
-	SDL_RenderCopy(aRenderer, gTexture, NULL, gImageArea);
+	if (gClip == NULL)
+	{
+		gTexture = ZeldaishFunctions::loadTexture(*aRenderer, gImagePath);
+		SDL_RenderCopy(aRenderer, gTexture, NULL, gImageArea);
+		SDL_DestroyTexture(gTexture);
+	}
+	else 
+	{
+		gTexture = ZeldaishFunctions::loadTexture(*aRenderer, gImagePath);
+		SDL_RenderCopy(aRenderer, gTexture, gClip, gImageArea);
+		SDL_DestroyTexture(gTexture);
+	}
 }
 
 ZeldaishObject::~ZeldaishObject()
@@ -36,9 +49,9 @@ std::string ZeldaishObject::getName()
 	return gName;
 }
 
-SDL_Rect ZeldaishObject::getRectangle() 
+SDL_Rect* ZeldaishObject::getRectangle() 
 {
-	return *gImageArea;
+	return gImageArea;
 }
 
 int ZeldaishObject::getX() 
@@ -70,4 +83,14 @@ void ZeldaishObject::SetPosition(int aX, int aY)
 {
 	gImageArea->x = aX;
 	gImageArea->y = aY;
+}
+
+SDL_Rect* ZeldaishObject::getClip() 
+{
+	return gClip;
+}
+
+void ZeldaishObject::setImagePath(std::string aName) 
+{
+	gImagePath = aName;
 }

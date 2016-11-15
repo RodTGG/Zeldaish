@@ -13,6 +13,7 @@ public:
 
 	bool isPlaying();
 	void setPlay(bool aState);
+	int getLives();
 private:
 	int gScore;
 	int gSteps;
