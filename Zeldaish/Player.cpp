@@ -12,11 +12,6 @@ Player::Player(std::string aName, std::string aImgName) : Character(aName, aImgN
 	gPlaying = false;
 	gMap = new MapNode("Home", "ground.png");
 
-	gImageArea->x = 0;
-	gImageArea->y = 0;
-	gImageArea->w = 50;
-	gImageArea->h = 60;
-
 	gClips[0].x = 22;
 	gClips[0].y = 97;
 	gClips[0].w = 357;
@@ -116,9 +111,9 @@ Player::~Player()
 {
 }
 
-void Player::PlayAnimation() 
+void Player::PlayAnimation()
 {
-	while (gPlaying) 
+	while (gPlaying)
 	{
 		switch (gAnimation)
 		{
@@ -165,7 +160,7 @@ void Player::PlayAnimation()
 			gCurrentClip = gClips[15];
 			std::this_thread::sleep_for(std::chrono::milliseconds(100));
 			break;
-		} 
+		}
 	}
 }
 
@@ -182,7 +177,7 @@ void Player::Display(SDL_Renderer* aRenderer)
 	SDL_DestroyTexture(gTexture);
 }
 
-bool Player::isPlaying() 
+bool Player::isPlaying()
 {
 	return gPlaying;
 }
@@ -192,17 +187,54 @@ void Player::setPlay(bool aState)
 	gPlaying = aState;
 }
 
-int Player::getLives() 
+int Player::getLives()
 {
 	return gLives;
 }
 
-MapNode* Player::getMapNode() 
+MapNode* Player::getMapNode()
 {
 	return gMap;
 }
 
-void Player::setMaptNode(MapNode* aNode) 
+void Player::setMaptNode(MapNode* aNode)
 {
 	gMap = aNode;
+}
+
+void Player::setLives(int aLives)
+{
+	gLives = aLives;
+}
+
+void Player::Move(Directions aDirection)
+{
+	switch (aDirection)
+	{
+	case DIRECTION_UP:
+		gCurrentDirection = DIRECTION_UP;
+		SetPosition(getX(), getY() - gSpeed);
+		SetAnimation(2);
+		break;
+	case DIRECTION_DOWN:
+		gCurrentDirection = DIRECTION_DOWN;
+		SetPosition(getX(), getY() + gSpeed);
+		SetAnimation(1);
+		break;
+	case DIRECTION_LEFT:
+		gCurrentDirection = DIRECTION_LEFT;
+		SetPosition(getX() - gSpeed, getY());
+		SetAnimation(3);
+		break;
+	case DIRECTION_RIGHT:
+		gCurrentDirection = DIRECTION_RIGHT;
+		SetPosition(getX() + gSpeed, getY());
+		SetAnimation(4);
+		break;
+	}
+}
+
+void Player::Update(Directions aDir, Character* aCharacter)
+{
+
 }

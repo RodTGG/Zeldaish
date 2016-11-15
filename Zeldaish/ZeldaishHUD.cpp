@@ -26,6 +26,11 @@ void ZeldaishHUD::Update(Player* aPlayer)
 {
 	switch (aPlayer->getLives())
 	{
+	case 0:
+		gHearts[0]->setImagePath("emptyheart.png");
+		gHearts[1]->setImagePath("emptyheart.png");
+		gHearts[2]->setImagePath("emptyheart.png");
+		break;
 	case 1:
 		gHearts[0]->setImagePath("heart.png");
 		gHearts[1]->setImagePath("emptyheart.png");

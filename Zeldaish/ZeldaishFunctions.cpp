@@ -95,3 +95,66 @@ Mix_Music* ZeldaishFunctions::loadMusic(std::string aPath)
 	return result;
 
 }
+
+bool ZeldaishFunctions::CollidedWith(ZeldaishObject& aSource, ZeldaishObject& aObject) 
+{
+	bool result = true;
+
+	int aLeft = aSource.getX();
+	int aRight = aSource.getX() + aSource.getW();
+	int aTop = aSource.getY();
+	int aBottom = aSource.getY() + aSource.getH();
+
+	int bLeft = aObject.getX();
+	int bRight = aObject.getX() + aObject.getW();
+	int bTop = aObject.getY();
+	int bBottom = aObject.getY() + aObject.getH();
+
+	if (aLeft >= bRight) 
+	{
+		result = false;
+	}
+	if (aRight <= bLeft)
+	{
+		result = false;
+	}
+	if (aBottom <= bTop)
+	{
+		result = false;
+	}
+	if (aTop >= bBottom)
+	{
+		result = false;
+	}
+
+	if (result == true) 
+	{
+		std::cout << aSource.getName() + " collided with " + aObject.getName() << std::endl;
+	}
+
+	return result;
+}
+
+Directions ZeldaishFunctions::MoveTowards(ZeldaishObject& aSource, ZeldaishObject& aObject)
+{
+	Directions result;
+
+	if (aSource.getX() > aObject.getX()) 
+	{
+		result = DIRECTION_LEFT;
+	}
+	if (aSource.getX() < aObject.getX())
+	{
+		result = DIRECTION_RIGHT;
+	}
+	if (aSource.getY() > aObject.getY())
+	{
+		result = DIRECTION_UP;
+	}
+	if (aSource.getY() < aObject.getY())
+	{
+		result = DIRECTION_DOWN;
+	}
+
+	return result;
+}

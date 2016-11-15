@@ -1,4 +1,5 @@
 #pragma once
+#include "ZeldaishObject.h"
 
 /// <summary>
 /// ZeldaishFunctions class
@@ -48,5 +49,17 @@ public:
 	/// <param name="aPath">a path.</param>
 	/// <returns></returns>
 	static Mix_Music* loadMusic(const std::string aPath);
+	
+	/// <summary>
+	/// Checks collision with object.
+	/// </summary>
+	/// <param name="aSource">a source.</param>
+	/// <param name="aObject">a object.</param>
+	/// <returns>
+	///	<c>true</c> if collision detected;otherwise, <c>false</c>
+	///</returns>
+	static bool CollidedWith(ZeldaishObject& aSource, ZeldaishObject& aObject);
+
+	static Directions MoveTowards(ZeldaishObject& aSource, ZeldaishObject& aObject);
 };
 

@@ -17,9 +17,25 @@ MapNode::~MapNode()
 {
 }
 
-void MapNode::AddMapNode(MapNode* aNode) 
+void MapNode::AddMapNode(std::string aDirection, MapNode* aNode)
 {
-	gNeighbor.push_back(aNode);
+	gNeighbor[aDirection] = aNode;
+}
+
+bool MapNode::HasNeighbor(std::string aDirection)
+{
+	bool result = false;
+
+	if (gNeighbor.find(aDirection) == gNeighbor.end())
+	{
+		result = false;
+	}
+	else
+	{
+		result = true;
+	}
+
+	return result;
 }
 
 void MapNode::Display(SDL_Renderer* aRender)
@@ -28,7 +44,7 @@ void MapNode::Display(SDL_Renderer* aRender)
 	SDL_RenderCopy(aRender, gTexture, gClip, gImageArea);
 	SDL_DestroyTexture(gTexture);
 
-	for (unsigned int i = 0; i < gCharacters->CharacterList().size(); i++) 
+	for (unsigned int i = 0; i < gCharacters->CharacterList().size(); i++)
 	{
 		if (gCharacters->CharacterList()[i] != NULL)
 		{

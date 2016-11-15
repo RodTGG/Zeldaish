@@ -6,7 +6,7 @@ AboutState::AboutState()
 {
 	gName = "About";
 	gId = States::STATE_ABOUT;
-	btnBack = new Button("Button Play", "btn_back.png", 5, 500, 150, 100);
+	btnBack = new Button("Button Play", "btn_back.png", 0, 500, 150, 100);
 }
 
 

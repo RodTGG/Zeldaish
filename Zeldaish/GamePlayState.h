@@ -1,7 +1,8 @@
 #pragma once
 #include "ZeldaishState.h"
-#include "Player.h"
 #include "ZeldaishHUD.h"
+#include "Enemy.h"
+#include "Player.h"
 
 class GamePlayState :
 	public ZeldaishState
@@ -11,6 +12,8 @@ public:
 	~GamePlayState();
 	
 	void Setup() override;
+	void UpdateEnemies();
+	void CheckCollision();
 
 	States HandleInput();
 	/// <summary>

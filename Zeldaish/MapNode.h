@@ -11,11 +11,13 @@ public:
 	~MapNode();
 
 	void Display(SDL_Renderer* aRender) override;
+	void AddMapNode(std::string aDirection, MapNode* aNode);
+	bool HasNeighbor(std::string aDirection);
 
-	void AddMapNode(MapNode* aNode);
-	std::vector<MapNode*> gNeighbor;
-private:
+	std::map<std::string, MapNode*> gNeighbor;
+
 	ItemContainer* gItems;
 	CharacterContainer* gCharacters;
+private:
 };
 

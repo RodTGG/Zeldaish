@@ -14,10 +14,14 @@ public:
 	void PlayAnimation();
 
 	bool isPlaying();
-	void setPlay(bool aState);
 	int getLives();
+	void Update(Directions aDir, Character* aCharacter) override;
 
+	void Move(Directions aDirection) override;
 	void setMaptNode(MapNode* aNoe);
+	void setLives(int aLives);
+	void setPlay(bool aState);
+
 	MapNode* getMapNode();
 private:
 	int gScore;
@@ -25,7 +29,6 @@ private:
 	int gLives;
 	int gXP;
 	int gAnimation;
-
 	bool gPlaying;
 
 	SDL_Rect gCurrentClip;

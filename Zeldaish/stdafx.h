@@ -18,6 +18,7 @@
 #include <thread>
 #include <mutex>
 #include <chrono>
+#include <map>
 
 // SDL Libraries
 #include "SDL.h"

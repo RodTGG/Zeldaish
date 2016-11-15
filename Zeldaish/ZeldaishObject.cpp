@@ -3,6 +3,7 @@
 
 ZeldaishObject::ZeldaishObject(std::string aName, std::string aImgName)
 {
+	gName = aName;
 	gImagePath = aImgName;
 	gImageArea = new SDL_Rect();
 	gImageArea->x = 0;
@@ -14,6 +15,7 @@ ZeldaishObject::ZeldaishObject(std::string aName, std::string aImgName)
 
 ZeldaishObject::ZeldaishObject(std::string aName, std::string aImgName, int aX, int aY, int aW, int aH)
 {
+	gName = aName;
 	gImagePath =  aImgName;
 	gImageArea = new SDL_Rect();
 	gImageArea->x = aX;

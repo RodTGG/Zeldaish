@@ -63,9 +63,8 @@ void ZeldaishEngine::update()
 	do
 	{
 		gStateManager->getCurrentSate()->Update();
-
 		//Sleep thread
-		std::this_thread::sleep_for(std::chrono::nanoseconds(50));
+		std::this_thread::sleep_for(std::chrono::nanoseconds(100));
 	} while (!exiting);
 }
 
@@ -116,20 +115,20 @@ void ZeldaishEngine::init()
 	{
 		Error::Display("SDL could not initialized");
 	}
-
+	//Initialize IMG
 	std::cout << "Initializing IMG" << std::endl;
 	if (IMG_Init(IMG_INIT_PNG) < 0)
 	{
 		Error::Display("Could not initialize SDL IMG");
 	}
-
+	//Initialize MIX
 	std::cout << "Initializing Mix" << std::endl;
 	if (Mix_Init(MIX_INIT_MP3) < 0)
 	{
 		Error::Display("Error with mixer");
 		printf("SDL_mixer could not initialize! SDL_mixer Error: %s\n", Mix_GetError());
 	}
-
+	//Initialize Audio Channel
 	if (Mix_OpenAudio(22050, AUDIO_S16SYS, 2, 640) < 0)
 	{
 		printf("SDL_mixer could not initialize! SDL_mixer Error: %s\n", Mix_GetError());
@@ -137,12 +136,13 @@ void ZeldaishEngine::init()
 	}
 
 	std::cout << "Creating Window" << std::endl;
+	//to set fullscreen use SDL_WINDOW_FULLSCREEN flag
 	gWindow = SDL_CreateWindow("Zeldaish", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 600, SDL_WINDOW_SHOWN);
 	if (gWindow == NULL)
 	{
 		Error::Display("Window could not be created");
 	}
-
+	//Initialize Renderer
 	std::cout << "Creating renderer" << std::endl;
 	gRenderer = SDL_CreateRenderer(gWindow, -1, SDL_RENDERER_ACCELERATED);
 	if (gRenderer == NULL)
