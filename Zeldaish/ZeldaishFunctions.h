@@ -40,5 +40,13 @@ public:
 	/// <param name="aPath">a path to file.</param>
 	/// <returns>converted texture</returns>
 	static SDL_Texture* loadTexture(SDL_Renderer& aRenderer, const std::string aPath);
+	
+	/// <summary>
+	/// Loads the specified music.
+	/// If no throws Error
+	/// </summary>
+	/// <param name="aPath">a path.</param>
+	/// <returns></returns>
+	static Mix_Music* loadMusic(const std::string aPath);
 };
 

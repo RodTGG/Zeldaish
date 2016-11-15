@@ -1,5 +1,7 @@
 #pragma once
 #include "Character.h"
+#include "MapNode.h"
+
 class Player :
 	public Character
 {
@@ -14,6 +16,9 @@ public:
 	bool isPlaying();
 	void setPlay(bool aState);
 	int getLives();
+
+	void setMaptNode(MapNode* aNoe);
+	MapNode* getMapNode();
 private:
 	int gScore;
 	int gSteps;
@@ -22,7 +27,10 @@ private:
 	int gAnimation;
 
 	bool gPlaying;
+
 	SDL_Rect gCurrentClip;
 	SDL_Rect gClips[16];
+
+	MapNode* gMap;
 };
 

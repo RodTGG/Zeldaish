@@ -8,6 +8,8 @@ GamePlayState::GamePlayState()
 	gPlayer = new Player("My Player", "Player.png");
 	gHud = new ZeldaishHUD();
 	gPlayer->setPlay(true);
+
+	gPlayer->getMapNode()->AddMapNode(new MapNode("Stage 2", "brick.png"));
 }
 
 
@@ -15,25 +17,35 @@ GamePlayState::~GamePlayState()
 {
 }
 
+void GamePlayState::Setup()
+{
+	gMusic = ZeldaishFunctions::loadMusic("A Night Of Dizzy Spells.mp3");
+	Mix_PlayMusic(gMusic, -1);
+}
+
 void GamePlayState::Display(SDL_Renderer* aRenderer)
 {
-	gBackground = ZeldaishFunctions::loadTexture(*aRenderer, "ground.png");
-	SDL_RenderCopy(aRenderer, gBackground, NULL, NULL);
 	gPlayer->Display(aRenderer);
 	gHud->Display(aRenderer, gPlayer);
-	//Clear memory
-	SDL_DestroyTexture(gBackground);
 }
 
 void GamePlayState::Update()
 {
 	gHud->Update(gPlayer);
+
+	if (gPlayer->getX() > 800) 
+	{
+		gPlayer->setMaptNode(gPlayer->getMapNode()->gNeighbor[0]);
+		gPlayer->SetPosition(0, gPlayer->getY());
+	}
 }
 
 States GamePlayState::HandleInput()
 {
 	States result = STATE_MAINMENU;
 	bool selected = false;
+
+	Setup();
 
 	do {
 		while (SDL_PollEvent(e) != 0)

@@ -32,6 +32,16 @@ public:
 	/// </summary>
 	/// <returns>State</returns>
 	States getID();
+	
+	/// <summary>
+	/// Setups this instance.
+	/// </summary>
+	virtual void Setup() = 0;
+	
+	/// <summary>
+	/// Gets the name.
+	/// </summary>
+	/// <returns>Name</returns>
 	std::string getName();
 private:
 
@@ -40,5 +50,7 @@ protected:
 	SDL_Event* e;	//event for polling or waiting
 	SDL_Texture* gBackground; //background texture
 	States gId; //id
+
+	Mix_Music* gMusic;
 };
 

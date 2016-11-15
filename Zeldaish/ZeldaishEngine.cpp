@@ -124,7 +124,13 @@ void ZeldaishEngine::init()
 	}
 
 	std::cout << "Initializing Mix" << std::endl;
-	if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0)
+	if (Mix_Init(MIX_INIT_MP3) < 0)
+	{
+		Error::Display("Error with mixer");
+		printf("SDL_mixer could not initialize! SDL_mixer Error: %s\n", Mix_GetError());
+	}
+
+	if (Mix_OpenAudio(22050, AUDIO_S16SYS, 2, 640) < 0)
 	{
 		printf("SDL_mixer could not initialize! SDL_mixer Error: %s\n", Mix_GetError());
 		Error::Display("Error with mixer");

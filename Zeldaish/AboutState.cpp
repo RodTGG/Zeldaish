@@ -14,6 +14,10 @@ AboutState::~AboutState()
 {
 }
 
+void AboutState::Setup()
+{
+}
+
 void AboutState::Update() 
 {
 

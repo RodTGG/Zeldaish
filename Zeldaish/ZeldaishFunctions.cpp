@@ -39,10 +39,10 @@ bool ZeldaishFunctions::buttonDown(const SDL_Event& aEvent, SDL_Keycode aCode)
 		std::cout << "Key Down" << std::endl;
 		result = true;
 	}
-	else if(aEvent.type == SDL_KEYUP && aEvent.key.keysym.sym == aCode)
+	else if (aEvent.type == SDL_KEYUP && aEvent.key.keysym.sym == aCode)
 	{
 		std::cout << "Key Up" << std::endl;
-		result == false;
+		result = false;
 	}
 
 	return result;
@@ -72,6 +72,26 @@ SDL_Texture* ZeldaishFunctions::loadTexture(SDL_Renderer& aRenderer, const std::
 	}
 
 	fSurface = nullptr;
-	
+
 	return result;
+}
+
+Mix_Music* ZeldaishFunctions::loadMusic(std::string aPath)
+{
+	std::string fPath = "Resources/Music/" + aPath;
+
+	std::cout << "Attempting to load music " + aPath<< std::endl;
+	Mix_Music* result = Mix_LoadMUS(fPath.c_str());
+	if (result == NULL)
+	{
+		std::cout << "Unable to load music " + aPath << std::endl;
+		std::cout << Mix_GetError() << std::endl;
+	}
+	else
+	{
+		std::cout << "Successfully loaded music "  + aPath<< std::endl;
+	}
+
+	return result;
+
 }

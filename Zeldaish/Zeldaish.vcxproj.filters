@@ -69,6 +69,12 @@
     <ClCompile Include="ZeldaishHUD.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="MapNode.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CharacterContainer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -123,6 +129,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ZeldaishHUD.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MapNode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CharacterContainer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

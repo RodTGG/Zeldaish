@@ -4,6 +4,7 @@
 
 ZeldaishState::ZeldaishState()
 {
+	gMusic = NULL;
 	e = new SDL_Event();
 	gBackground = NULL;
 }

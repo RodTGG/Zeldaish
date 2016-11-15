@@ -13,7 +13,8 @@ class AboutState :
 public:
 	AboutState();
 	~AboutState();
-		
+	
+	void Setup() override;
 	/// <summary>
 	/// Updates this instance.
 	/// </summary>

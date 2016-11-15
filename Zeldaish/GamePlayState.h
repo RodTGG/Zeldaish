@@ -10,6 +10,8 @@ public:
 	GamePlayState();
 	~GamePlayState();
 	
+	void Setup() override;
+
 	States HandleInput();
 	/// <summary>
 	/// Updates this instance.

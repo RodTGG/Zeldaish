@@ -10,6 +10,7 @@ Player::Player(std::string aName, std::string aImgName) : Character(aName, aImgN
 	gXP = 0;
 	gSpeed = 10;
 	gPlaying = false;
+	gMap = new MapNode("Home", "ground.png");
 
 	gImageArea->x = 0;
 	gImageArea->y = 0;
@@ -175,6 +176,7 @@ void Player::SetAnimation(int aNum)
 
 void Player::Display(SDL_Renderer* aRenderer)
 {
+	gMap->Display(aRenderer);
 	gTexture = ZeldaishFunctions::loadTexture(*aRenderer, gImagePath);
 	SDL_RenderCopy(aRenderer, gTexture, &gCurrentClip, gImageArea);
 	SDL_DestroyTexture(gTexture);
@@ -193,4 +195,14 @@ void Player::setPlay(bool aState)
 int Player::getLives() 
 {
 	return gLives;
+}
+
+MapNode* Player::getMapNode() 
+{
+	return gMap;
+}
+
+void Player::setMaptNode(MapNode* aNode) 
+{
+	gMap = aNode;
 }

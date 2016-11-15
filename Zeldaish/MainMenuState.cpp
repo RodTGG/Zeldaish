@@ -9,11 +9,16 @@ MainMenuState::MainMenuState()
 	btnPlay = new Button("Button Play", "btn_play.png", 350, 20, 150, 100);
 	btnAbout = new Button("Button About", "btn_about.png", 350, 140, 150, 100);
 	btnExit = new Button("Button Exit", "btn_exit.png", 350, 260, 150, 100);
-
 }
 
 MainMenuState::~MainMenuState()
 {
+}
+
+void MainMenuState::Setup()
+{
+	gMusic = ZeldaishFunctions::loadMusic("All of Us.mp3");
+	Mix_PlayMusic(gMusic, -1);
 }
 
 void MainMenuState::Update() 
@@ -38,6 +43,8 @@ States MainMenuState::HandleEvent(SDL_Renderer* aRenderer)
 	States result = STATE_MAINMENU;
 	bool selected = false;
 
+
+	Setup();
 	do {
 		while (SDL_PollEvent(e) != 0)
 		{
@@ -52,6 +59,8 @@ States MainMenuState::HandleEvent(SDL_Renderer* aRenderer)
 				{
 					result = STATE_GAMEPLAY;
 					selected = true;
+					Mix_FadeOutMusic(50);
+					Mix_FreeMusic(gMusic);
 				}
 				else if (ZeldaishFunctions::leftMouseButtonClicked(*e) && ZeldaishFunctions::isOver(*btnAbout->getRectangle()))
 				{
@@ -62,6 +71,8 @@ States MainMenuState::HandleEvent(SDL_Renderer* aRenderer)
 				{
 					result = STATE_EXIT;
 					selected = true;
+					Mix_FadeOutMusic(50);
+					Mix_FreeMusic(gMusic);
 				}
 			}
 			std::this_thread::sleep_for(std::chrono::microseconds(20));
