@@ -5,6 +5,14 @@
 Enemy::Enemy(std::string aName, std::string aImgName) : Character(aName, aImgName)
 {
 	gEnemy = true;
+	gSpeed += gLevel;
+}
+
+Enemy::Enemy(std::string aName, std::string aImgName, int aLevel) : Character(aName, aImgName)
+{
+	gLevel = aLevel;
+	gEnemy = true;
+	gSpeed += gLevel;
 }
 
 

@@ -28,3 +28,13 @@ States ZeldaishState::getID()
 {
 	return gId;
 }
+
+void ZeldaishState::Setup() 
+{
+
+}
+
+void ZeldaishState::Update() 
+{
+
+}

@@ -14,15 +14,6 @@ AboutState::~AboutState()
 {
 }
 
-void AboutState::Setup()
-{
-}
-
-void AboutState::Update() 
-{
-
-}
-
 void AboutState::Display(SDL_Renderer* aRenderer)
 {
 	

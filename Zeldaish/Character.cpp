@@ -100,3 +100,8 @@ void Character::Update()
 {
 	Move(gCurrentDirection);
 }
+
+void Character::setAlive(bool aState) 
+{
+	gAlive = aState;
+}

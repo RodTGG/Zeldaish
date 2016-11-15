@@ -21,6 +21,8 @@ public:
 	bool isAlive();
 	bool isEnemy();
 
+	void setAlive(bool aState);
+
 	Directions getDirection();
 	ItemContainer* getInventory();
 private:

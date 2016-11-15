@@ -1,4 +1,5 @@
 #pragma once
+#include "Button.h"
 
 /// <summary>
 /// Parent state class
@@ -14,7 +15,7 @@ public:
 	/// <summary>
 	/// Updates this instance.
 	/// </summary>
-	virtual void Update() = 0;
+	virtual void Update();
 	/// <summary>
 	/// Displays the interface
 	/// </summary>
@@ -36,7 +37,7 @@ public:
 	/// <summary>
 	/// Setups this instance.
 	/// </summary>
-	virtual void Setup() = 0;
+	virtual void Setup();
 	
 	/// <summary>
 	/// Gets the name.

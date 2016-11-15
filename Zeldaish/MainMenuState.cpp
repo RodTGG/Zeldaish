@@ -21,11 +21,6 @@ void MainMenuState::Setup()
 	Mix_PlayMusic(gMusic, -1);
 }
 
-void MainMenuState::Update() 
-{
-
-}
-
 void MainMenuState::Display(SDL_Renderer* aRenderer)
 {
 	gBackground = ZeldaishFunctions::loadTexture(*aRenderer, "menu_background.png");

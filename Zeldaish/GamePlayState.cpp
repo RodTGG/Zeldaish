@@ -27,9 +27,25 @@ void GamePlayState::Setup()
 	gPlayer->getMapNode()->gNeighbor["right"]->AddMapNode("left", gPlayer->getMapNode());
 	gPlayer->getMapNode()->gNeighbor["right"]->AddMapNode("top", new MapNode("Stage 3", "stone.png"));
 
-
+	// Characters
+	gPlayer->SetPosition(400, 510);
 	gPlayer->getMapNode()->gCharacters->AddCharacter(new Enemy("mage", "mage.png"));
 	gPlayer->getMapNode()->gCharacters->CharacterList()[0]->SetPosition(400, 50);
+	gPlayer->getMapNode()->gCharacters->AddCharacter(new Enemy("mage1", "mage.png"));
+	gPlayer->getMapNode()->gCharacters->CharacterList()[1]->SetPosition(300, 50);
+	gPlayer->getMapNode()->gCharacters->AddCharacter(new Enemy("mage2", "mage.png"));
+	gPlayer->getMapNode()->gCharacters->CharacterList()[2]->SetPosition(600, 50);
+	gPlayer->getMapNode()->gNeighbor["left"]->gCharacters->AddCharacter((new Enemy("chief", "chief.png", 5)));
+	gPlayer->getMapNode()->gNeighbor["right"]->gCharacters->AddCharacter((new Enemy("dova", "dovakin.png", 1)));
+
+
+	gPlayer->getMapNode()->gNeighbor["right"]->gNeighbor["top"]->gCharacters->AddCharacter((new Enemy("dova1", "dovakin.png", 1)));
+	gPlayer->getMapNode()->gNeighbor["right"]->gNeighbor["top"]->gCharacters->AddCharacter((new Enemy("mage4", "mage.png", 1)));
+	gPlayer->getMapNode()->gNeighbor["right"]->gNeighbor["top"]->gCharacters->AddCharacter((new Enemy("chief2", "chief.png", 1)));
+
+	gPlayer->getMapNode()->gNeighbor["right"]->gNeighbor["top"]->gCharacters->CharacterList()[0]->SetPosition(300, 50);
+	gPlayer->getMapNode()->gNeighbor["right"]->gNeighbor["top"]->gCharacters->CharacterList()[1]->SetPosition(400, 50);
+	gPlayer->getMapNode()->gNeighbor["right"]->gNeighbor["top"]->gCharacters->CharacterList()[2]->SetPosition(500, 50);
 }
 
 void GamePlayState::Display(SDL_Renderer* aRenderer)
@@ -162,6 +178,11 @@ void GamePlayState::Update()
 	gHud->Update(gPlayer);
 	UpdateEnemies();
 	CheckCollision();
+
+	if (gPlayer->getLives() <= 0) 
+	{
+		gPlayer->setAlive(false);
+	}
 }
 
 States GamePlayState::HandleInput()
@@ -172,6 +193,13 @@ States GamePlayState::HandleInput()
 	Setup();
 
 	do {
+		if (!gPlayer->isAlive()) 
+		{
+			result = STATE_DEAD;
+			selected = true;
+			gPlayer->setPlay(false);
+		}
+
 		while (SDL_PollEvent(e) != 0)
 		{
 			if (e->type == SDL_QUIT)

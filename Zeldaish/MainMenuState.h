@@ -15,10 +15,6 @@ public:
 	~MainMenuState();
 	
 	void Setup() override;
-	/// <summary>
-	/// Updates this instance.
-	/// </summary>
-	void Update() override;
 
 	/// <summary>
 	/// Displays the interface

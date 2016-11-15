@@ -172,9 +172,13 @@ void Player::SetAnimation(int aNum)
 void Player::Display(SDL_Renderer* aRenderer)
 {
 	gMap->Display(aRenderer);
-	gTexture = ZeldaishFunctions::loadTexture(*aRenderer, gImagePath);
-	SDL_RenderCopy(aRenderer, gTexture, &gCurrentClip, gImageArea);
-	SDL_DestroyTexture(gTexture);
+
+	if (gAlive) 
+	{
+		gTexture = ZeldaishFunctions::loadTexture(*aRenderer, gImagePath);
+		SDL_RenderCopy(aRenderer, gTexture, &gCurrentClip, gImageArea);
+		SDL_DestroyTexture(gTexture);
+	}
 }
 
 bool Player::isPlaying()
