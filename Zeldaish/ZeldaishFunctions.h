@@ -44,11 +44,13 @@ public:
 	
 	/// <summary>
 	/// Loads the specified music.
-	/// If no throws Error
+	/// If NULL throws Error
 	/// </summary>
 	/// <param name="aPath">a path.</param>
 	/// <returns></returns>
 	static Mix_Music* loadMusic(const std::string aPath);
+
+	static Mix_Chunk* loadSFX(const std::string aPath);
 	
 	/// <summary>
 	/// Checks collision with object.

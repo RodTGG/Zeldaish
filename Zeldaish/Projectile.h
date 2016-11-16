@@ -4,7 +4,7 @@ class Projectile :
 	public ZeldaishObject
 {
 public:
-	Projectile();
+	Projectile(std::string aSFX);
 	~Projectile();
 
 	void Update();
@@ -15,5 +15,6 @@ public:
 private:
 	bool gFired;
 	Directions gCurrentDirection;
+	Mix_Chunk* gSFX;
 };
 

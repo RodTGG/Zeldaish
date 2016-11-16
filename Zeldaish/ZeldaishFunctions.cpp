@@ -76,11 +76,31 @@ SDL_Texture* ZeldaishFunctions::loadTexture(SDL_Renderer& aRenderer, const std::
 	return result;
 }
 
+Mix_Chunk* ZeldaishFunctions::loadSFX(std::string aPath)
+{
+	std::string fPath = "Resources/SFX/" + aPath;
+
+	std::cout << "Attempting to load music " + aPath<< std::endl;
+	Mix_Chunk* result = Mix_LoadWAV(fPath.c_str());
+	if (result == NULL)
+	{
+		std::cout << "Unable to load sfx " + aPath << std::endl;
+		std::cout << Mix_GetError() << std::endl;
+	}
+	else
+	{
+		std::cout << "Successfully loaded sfx "  + aPath<< std::endl;
+	}
+
+	return result;
+
+}
+
 Mix_Music* ZeldaishFunctions::loadMusic(std::string aPath)
 {
 	std::string fPath = "Resources/Music/" + aPath;
 
-	std::cout << "Attempting to load music " + aPath<< std::endl;
+	std::cout << "Attempting to load music " + aPath << std::endl;
 	Mix_Music* result = Mix_LoadMUS(fPath.c_str());
 	if (result == NULL)
 	{
@@ -89,7 +109,7 @@ Mix_Music* ZeldaishFunctions::loadMusic(std::string aPath)
 	}
 	else
 	{
-		std::cout << "Successfully loaded music "  + aPath<< std::endl;
+		std::cout << "Successfully loaded music " + aPath << std::endl;
 	}
 
 	return result;

@@ -106,7 +106,7 @@ Player::Player(std::string aName, std::string aImgName) : Character(aName, aImgN
 	gAnimation = 0;
 	gCurrentClip = gClips[0];
 
-	gProjectile = new Projectile();
+	gProjectile = new Projectile("laser.wav");
 }
 
 

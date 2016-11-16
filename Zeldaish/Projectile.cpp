@@ -2,10 +2,11 @@
 #include "Projectile.h"
 
 
-Projectile::Projectile() : ZeldaishObject("Projectile", "bullet.png")
+Projectile::Projectile(std::string aSFX) : ZeldaishObject("Projectile", "bullet.png")
 {
 	gImageArea->w = 20;
 	gImageArea->h = 60;
+	gSFX = ZeldaishFunctions::loadSFX(aSFX);
 }
 
 
@@ -52,6 +53,10 @@ bool Projectile::isFired()
 
 void Projectile::setFired(bool aState)
 {
+	if (aState == true)
+	{
+		Mix_PlayChannel(-1, gSFX, 0);
+	}
 	gFired = aState;
 }
 
@@ -76,4 +81,5 @@ void Projectile::FireProjectile(Directions aDirection)
 		SetPosition(getX() + 10, getY());
 		break;
 	}
+	std::this_thread::sleep_for(std::chrono::microseconds(50));
 }
