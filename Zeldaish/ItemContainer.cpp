@@ -47,6 +47,7 @@ Item* ItemContainer::DropItem(Item* aItem)
 		{
 			result = gItems[i];
 			gItems.erase(gItems.begin() + i);
+			gItems.resize(gItems.size());
 			break;
 		}
 	}
@@ -61,6 +62,7 @@ void ItemContainer::RemoveItem(Item* aItem)
 		if (gItems[i] == aItem)
 		{
 			gItems.erase(gItems.begin() + i);
+			gItems.resize(gItems.size());
 			break;
 		}
 	}

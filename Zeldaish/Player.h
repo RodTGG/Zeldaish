@@ -1,6 +1,7 @@
 #pragma once
 #include "Character.h"
 #include "MapNode.h"
+#include "Projectile.h"
 
 class Player :
 	public Character
@@ -17,12 +18,14 @@ public:
 	int getLives();
 	void Update(Directions aDir, Character* aCharacter) override;
 
+	void Attack();
 	void Move(Directions aDirection) override;
 	void setMaptNode(MapNode* aNoe);
 	void setLives(int aLives);
 	void setPlay(bool aState);
 
 	MapNode* getMapNode();
+	Projectile* gProjectile;
 private:
 	int gScore;
 	int gSteps;
@@ -33,7 +36,6 @@ private:
 
 	SDL_Rect gCurrentClip;
 	SDL_Rect gClips[16];
-
 	MapNode* gMap;
 };
 

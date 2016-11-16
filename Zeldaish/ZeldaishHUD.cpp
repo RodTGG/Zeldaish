@@ -9,6 +9,7 @@ ZeldaishHUD::ZeldaishHUD() : ZeldaishObject("HUD", "HUD.png")
 	gImageArea->w = 800;
 	gImageArea->h = 70;
 
+	// Sets up hearts
 	for (unsigned int i = 0; i < 3; i++)
 	{
 		gHearts[i] = new ZeldaishObject("Heart" + i, "heart.png");
@@ -22,8 +23,9 @@ ZeldaishHUD::~ZeldaishHUD()
 {
 }
 
-void ZeldaishHUD::Update(Player* aPlayer) 
+void ZeldaishHUD::Update(Player* aPlayer)
 {
+	// Updates UI based on player lives
 	switch (aPlayer->getLives())
 	{
 	case 0:
@@ -51,19 +53,35 @@ void ZeldaishHUD::Update(Player* aPlayer)
 
 void ZeldaishHUD::Display(SDL_Renderer* aRender, Player* aPlayer)
 {
-	int fOffset = 600;
+	// Heart offset
+	int fHOffset = 600;
+	// Item offset
+	int fIOffset = 11;
 
+	// Main Texture
 	gTexture = ZeldaishFunctions::loadTexture(*aRender, gImagePath);
 	SDL_RenderCopy(aRender, gTexture, gClip, gImageArea);
 	SDL_DestroyTexture(gTexture);
 
-	aPlayer->getInventory()->ItemList()[0]->SetPosition(11, 550);
-	aPlayer->getInventory()->ItemList()[0]->Display(aRender);
+	// First four items in player inventory
+	for (unsigned int i = 0; i < aPlayer->getInventory()->ItemList().size(); i++)
+	{
+		if (i < 4)
+		{
+			if (aPlayer->getInventory()->ItemList()[i] != NULL)
+			{
+				aPlayer->getInventory()->ItemList()[i]->SetPosition(fIOffset, 550);
+				aPlayer->getInventory()->ItemList()[i]->Display(aRender);
+				fIOffset += 60;
+			}
+		}
+	}
 
+	// Hearts
 	for (unsigned int i = 0; i < 3; i++)
 	{
-		gHearts[i]->SetPosition(fOffset, 545);
+		gHearts[i]->SetPosition(fHOffset, 545);
 		gHearts[i]->Display(aRender);
-		fOffset += 55;
+		fHOffset += 55;
 	}
 }

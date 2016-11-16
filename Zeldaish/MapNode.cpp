@@ -59,3 +59,13 @@ void MapNode::Display(SDL_Renderer* aRender)
 		}
 	}
 }
+void MapNode::Update()
+{
+	for (unsigned int i = 0; i < gCharacters->CharacterList().size(); i++)
+	{
+		if (!gCharacters->CharacterList()[i]->isAlive())
+		{
+			gCharacters->RemoveCharacter(gCharacters->CharacterList()[i]);
+		}
+	}
+}

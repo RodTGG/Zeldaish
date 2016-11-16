@@ -35,32 +35,45 @@ void GamePlayState::Setup()
 	gPlayer->getMapNode()->gCharacters->CharacterList()[1]->SetPosition(300, 50);
 	gPlayer->getMapNode()->gCharacters->AddCharacter(new Enemy("mage2", "mage.png"));
 	gPlayer->getMapNode()->gCharacters->CharacterList()[2]->SetPosition(600, 50);
+
+	// Character for 2nd map (right side)
 	gPlayer->getMapNode()->gNeighbor["left"]->gCharacters->AddCharacter((new Enemy("chief", "chief.png", 5)));
 	gPlayer->getMapNode()->gNeighbor["right"]->gCharacters->AddCharacter((new Enemy("dova", "dovakin.png", 1)));
 
-
+	// character for 3rd map (right side then top)
 	gPlayer->getMapNode()->gNeighbor["right"]->gNeighbor["top"]->gCharacters->AddCharacter((new Enemy("dova1", "dovakin.png", 1)));
 	gPlayer->getMapNode()->gNeighbor["right"]->gNeighbor["top"]->gCharacters->AddCharacter((new Enemy("mage4", "mage.png", 1)));
 	gPlayer->getMapNode()->gNeighbor["right"]->gNeighbor["top"]->gCharacters->AddCharacter((new Enemy("chief2", "chief.png", 1)));
-
 	gPlayer->getMapNode()->gNeighbor["right"]->gNeighbor["top"]->gCharacters->CharacterList()[0]->SetPosition(300, 50);
 	gPlayer->getMapNode()->gNeighbor["right"]->gNeighbor["top"]->gCharacters->CharacterList()[1]->SetPosition(400, 50);
 	gPlayer->getMapNode()->gNeighbor["right"]->gNeighbor["top"]->gCharacters->CharacterList()[2]->SetPosition(500, 50);
+
+
+	SDL_Rect* gunRect = new SDL_Rect();
+	gunRect->x = 230;
+	gunRect->y = 204;
+	gunRect->w = 100;
+	gunRect->h = 50;
+
+	gPlayer->getMapNode()->gItems->AddItem(new Item("gun2", "guns.png", gunRect));
+	gPlayer->getMapNode()->gItems->ItemList()[0]->SetPosition(600, 150);
+	gunRect = nullptr;
 }
 
 void GamePlayState::Display(SDL_Renderer* aRenderer)
 {
 	gPlayer->Display(aRenderer);
+	gPlayer->gProjectile->Display(aRenderer);
 	gHud->Display(aRenderer, gPlayer);
 }
 
 void GamePlayState::UpdateEnemies()
 {
 	// iterate enemies
-	for (unsigned int i = 0; i < gPlayer->getMapNode()->gCharacters->CharacterList().size(); i++) 
+	for (unsigned int i = 0; i < gPlayer->getMapNode()->gCharacters->CharacterList().size(); i++)
 	{
 		// Direct enemies towards player
-		if (gPlayer->getMapNode()->gCharacters->CharacterList()[i]->isEnemy()) 
+		if (gPlayer->getMapNode()->gCharacters->CharacterList()[i]->isEnemy())
 		{
 			gPlayer->getMapNode()->gCharacters->CharacterList()[i]->Update(DIRECTION_PLAYER, gPlayer);
 
@@ -75,7 +88,7 @@ void GamePlayState::CheckCollision()
 	// Check collision with characters
 	for (unsigned int i = 0; i < gPlayer->getMapNode()->gCharacters->CharacterList().size(); i++)
 	{
-		// checks collision
+		// checks collision with player
 		if (ZeldaishFunctions::CollidedWith(*gPlayer, *gPlayer->getMapNode()->gCharacters->CharacterList()[i]) && gPlayer->getMapNode()->gCharacters->CharacterList()[i]->isAlive())
 		{
 			// checks direction of collision for bounce off
@@ -96,9 +109,17 @@ void GamePlayState::CheckCollision()
 			}
 
 			// Checks if enemy
-			if (gPlayer->getMapNode()->gCharacters->CharacterList()[i]->isEnemy()) 
+			if (gPlayer->getMapNode()->gCharacters->CharacterList()[i]->isEnemy())
 			{
 				gPlayer->setLives(gPlayer->getLives() - 1);
+			}
+		}
+
+		if (gPlayer->gProjectile->isFired()) 
+		{
+			if (ZeldaishFunctions::CollidedWith(*gPlayer->gProjectile, *gPlayer->getMapNode()->gCharacters->CharacterList()[i]) && gPlayer->getMapNode()->gCharacters->CharacterList()[i]->isAlive())
+			{
+				gPlayer->getMapNode()->gCharacters->CharacterList()[i]->setAlive(false);
 			}
 		}
 	}
@@ -106,25 +127,10 @@ void GamePlayState::CheckCollision()
 	// Check collision with items
 	for (unsigned int i = 0; i < gPlayer->getMapNode()->gItems->ItemList().size(); i++)
 	{
-		// checks collision
+		//// checks collision
 		if (ZeldaishFunctions::CollidedWith(*gPlayer, *gPlayer->getMapNode()->gItems->ItemList()[i]))
 		{
-			// checks direction of collision for bounce off
-			switch (gPlayer->getDirection())
-			{
-			case DIRECTION_UP:
-				gPlayer->SetPosition(gPlayer->getX(), gPlayer->getY() + 10);
-				break;
-			case DIRECTION_DOWN:
-				gPlayer->SetPosition(gPlayer->getX(), gPlayer->getY() - 10);
-				break;
-			case DIRECTION_LEFT:
-				gPlayer->SetPosition(gPlayer->getX() + 10, gPlayer->getY());
-				break;
-			case DIRECTION_RIGHT:
-				gPlayer->SetPosition(gPlayer->getX() - 10, gPlayer->getY());
-				break;
-			}
+			gPlayer->getInventory()->AddItem(gPlayer->getMapNode()->gItems->DropItem(gPlayer->getMapNode()->gItems->ItemList()[i]));
 		}
 	}
 
@@ -176,10 +182,12 @@ void GamePlayState::CheckCollision()
 void GamePlayState::Update()
 {
 	gHud->Update(gPlayer);
+	gPlayer->gProjectile->Update();
 	UpdateEnemies();
 	CheckCollision();
+	gPlayer->getMapNode()->Update();
 
-	if (gPlayer->getLives() <= 0) 
+	if (gPlayer->getLives() <= 0)
 	{
 		gPlayer->setAlive(false);
 	}
@@ -193,7 +201,7 @@ States GamePlayState::HandleInput()
 	Setup();
 
 	do {
-		if (!gPlayer->isAlive()) 
+		if (!gPlayer->isAlive())
 		{
 			result = STATE_DEAD;
 			selected = true;
@@ -223,6 +231,10 @@ States GamePlayState::HandleInput()
 			else if (ZeldaishFunctions::buttonDown(*e, SDLK_d))
 			{
 				gPlayer->Move(DIRECTION_RIGHT);
+			}
+			else if (ZeldaishFunctions::buttonDown(*e, SDLK_SPACE))
+			{
+				gPlayer->Attack();
 			}
 			else
 			{

@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "Player.h"
+#include "Projectile.h"
 
 
 Player::Player(std::string aName, std::string aImgName) : Character(aName, aImgName)
@@ -104,11 +105,20 @@ Player::Player(std::string aName, std::string aImgName) : Character(aName, aImgN
 
 	gAnimation = 0;
 	gCurrentClip = gClips[0];
+
+	gProjectile = new Projectile();
 }
 
 
 Player::~Player()
 {
+}
+
+void Player::Attack() 
+{
+	gProjectile->SetPosition(getX(), getY());
+	gProjectile->setFired(true);
+	gProjectile->FireProjectile(gCurrentDirection);
 }
 
 void Player::PlayAnimation()
@@ -238,7 +248,4 @@ void Player::Move(Directions aDirection)
 	}
 }
 
-void Player::Update(Directions aDir, Character* aCharacter)
-{
-
-}
+void Player::Update(Directions aDir, Character* aCharacter) {}

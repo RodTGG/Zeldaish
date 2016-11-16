@@ -10,6 +10,7 @@ public:
 	MapNode(std::string aName, std::string aPath);
 	~MapNode();
 
+	void Update();
 	void Display(SDL_Renderer* aRender) override;
 	void AddMapNode(std::string aDirection, MapNode* aNode);
 	bool HasNeighbor(std::string aDirection);
