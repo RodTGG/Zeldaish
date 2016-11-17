@@ -1,0 +1,158 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="AboutState">
+    <Position X="6.25" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAQAQAACAAAAABAAAAABAAAAAA=</HashCode>
+      <FileName>AboutState.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Button">
+    <Position X="0.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>Button.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Character">
+    <Position X="2.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>SAQAACgAAIAIAAAEAAAEASAAgAAAAAABAAAAAAEAKQE=</HashCode>
+      <FileName>Character.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CharacterContainer">
+    <Position X="3" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAACAIAAAAAAABAAIAAAAABAAAAAAAAAAABAAAAAAA=</HashCode>
+      <FileName>CharacterContainer.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DeadState">
+    <Position X="13" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACCAAAAACAAAQAQAAAAAAAAAAAgAAAAAAAAA=</HashCode>
+      <FileName>DeadState.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Enemy">
+    <Position X="1" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgQAAgAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Enemy.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Error">
+    <Position X="4.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Error.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GamePlayState">
+    <Position X="10.75" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAACACAAAAAAAAAAQAQAAAAAAAAGAAAAAAIABCAA=</HashCode>
+      <FileName>GamePlayState.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Item">
+    <Position X="9.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Item.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ItemContainer">
+    <Position X="6.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAEBAAAAACAAAAgAAAgAAAAAAEACAAAAAAAAA=</HashCode>
+      <FileName>ItemContainer.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MainMenuState">
+    <Position X="8.5" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACAAABAAAACAQAQAAAKAAAAAAAAAAAAAEAAA=</HashCode>
+      <FileName>MainMenuState.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MapNode">
+    <Position X="7.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAQAAAAAGAAAAAAAAIEAAQAAAAAAAAAAAAAAAAAABAQ=</HashCode>
+      <FileName>MapNode.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Player">
+    <Position X="3.25" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAKAAAKAAAAAAACAAiQAEAIAgAQAEAqAAAQIgARQ=</HashCode>
+      <FileName>Player.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Projectile">
+    <Position X="11.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAYAAAAAAAAAAAAAAgEAAQAAJAAAAAAAAAAAAAAAIAA=</HashCode>
+      <FileName>Projectile.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StateManager">
+    <Position X="4.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAgAAAAAAAAgQAAAAAAAECAAAACAAAAAgAAAA=</HashCode>
+      <FileName>StateManager.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ZeldaishEngine">
+    <Position X="8.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgCAgAQAoAAABiAAACAAAAAAAEAAAYAAIIAAEAEAIA=</HashCode>
+      <FileName>ZeldaishEngine.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ZeldaishFunctions">
+    <Position X="10" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAABAAAAAAAAAAAAAAAhABAAAAAAAAAEIACAAA=</HashCode>
+      <FileName>ZeldaishFunctions.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ZeldaishHUD">
+    <Position X="14" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAQAAAAACAAAAAAAAQAAAAIAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ZeldaishHUD.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ZeldaishObject">
+    <Position X="1.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAIEIAAAAAAAiABAAAAAQEgIAAAAgCAAAAEAGAIQAA=</HashCode>
+      <FileName>ZeldaishObject.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ZeldaishState">
+    <Position X="9.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAQACAADAACAAAAQAQAAIAAABAACAABEAAAAAAA=</HashCode>
+      <FileName>ZeldaishState.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="Directions">
+    <Position X="10" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAgAAAAAAAAAAAAgAAAAAAAAAIQAAAAAAA=</HashCode>
+      <FileName>States.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="States">
+    <Position X="11.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAQAAgAAAAAAAACAAgAABAAgAAAAAAAAAAAA=</HashCode>
+      <FileName>States.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

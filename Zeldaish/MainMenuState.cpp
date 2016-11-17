@@ -70,7 +70,6 @@ States MainMenuState::HandleEvent(SDL_Renderer* aRenderer)
 					Mix_FreeMusic(gMusic);
 				}
 			}
-			std::this_thread::sleep_for(std::chrono::microseconds(20));
 		}
 	} while (!selected);
 

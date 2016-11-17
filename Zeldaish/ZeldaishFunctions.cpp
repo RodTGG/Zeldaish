@@ -3,7 +3,8 @@
 
 bool ZeldaishFunctions::isOver(const SDL_Rect& aArea)
 {
-	int x, y;
+	int x = 0;
+	int y = 0;
 	bool result = false;
 
 	SDL_GetMouseState(&x, &y);
@@ -56,7 +57,7 @@ SDL_Texture* ZeldaishFunctions::loadTexture(SDL_Renderer& aRenderer, const std::
 
 	if (fSurface == NULL)
 	{
-		printf("Unable to load image %s! SDL_image Error: %s\n", fPath.c_str(), IMG_GetError());
+		std::cout << "Unable to load image " + fPath + IMG_GetError() << std::endl;
 	}
 	else
 	{
@@ -64,7 +65,7 @@ SDL_Texture* ZeldaishFunctions::loadTexture(SDL_Renderer& aRenderer, const std::
 		result = SDL_CreateTextureFromSurface(&aRenderer, fSurface);
 		if (result == NULL)
 		{
-			printf("Unable to create texture from %s! SDL Error: %s\n", fPath.c_str(), SDL_GetError());
+			std::cout << "Unable to create texture from" + fPath + SDL_GetError();
 		}
 
 		//Get rid of old loaded surface
@@ -99,9 +100,9 @@ Mix_Chunk* ZeldaishFunctions::loadSFX(std::string aPath)
 Mix_Music* ZeldaishFunctions::loadMusic(std::string aPath)
 {
 	std::string fPath = "Resources/Music/" + aPath;
-
 	std::cout << "Attempting to load music " + aPath << std::endl;
 	Mix_Music* result = Mix_LoadMUS(fPath.c_str());
+
 	if (result == NULL)
 	{
 		std::cout << "Unable to load music " + aPath << std::endl;

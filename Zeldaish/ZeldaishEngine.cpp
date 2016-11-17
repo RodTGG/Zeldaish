@@ -64,7 +64,7 @@ void ZeldaishEngine::update()
 	{
 		gStateManager->getCurrentSate()->Update();
 		//Sleep thread
-		std::this_thread::sleep_for(std::chrono::nanoseconds(100));
+		std::this_thread::sleep_for(std::chrono::nanoseconds(10));
 	} while (!exiting);
 }
 
@@ -91,7 +91,7 @@ void ZeldaishEngine::run()
 	do
 	{
 		handleEvent();
-		std::this_thread::sleep_for(std::chrono::nanoseconds(50));
+		std::this_thread::sleep_for(std::chrono::nanoseconds(10));
 	} while (!isExiting());
 }
 

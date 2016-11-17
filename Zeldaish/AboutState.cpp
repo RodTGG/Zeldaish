@@ -45,7 +45,6 @@ States AboutState::HandleEvent(SDL_Renderer* aRenderer)
 					selected = true;
 				}
 			}
-			std::this_thread::sleep_for(std::chrono::microseconds(20));
 		}
 	} while (!selected);
 
